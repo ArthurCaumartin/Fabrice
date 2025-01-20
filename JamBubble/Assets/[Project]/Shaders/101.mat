@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-631092753680672353
+--- !u!114 &-4684929167122525683
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Outline
-  m_Shader: {fileID: -6465566751694194690, guid: 97f14142131bc644fbfd82a7616a5fbe,
+  m_Name: 101
+  m_Shader: {fileID: -6465566751694194690, guid: 15bbba58bca175e47b11aefe5b9c03eb,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,6 +37,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -51,10 +55,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fade_distance: 75
-    - _Outline_Thickness: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Outline_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 0.93584573, b: 0.1462264, a: 0}
   m_BuildTextureStacks: []
