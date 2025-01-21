@@ -38,12 +38,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Add_Alpha: 0.125
-    - _Blend_Opacity: 0.72
+    - _Add_Alpha: 0
+    - _Alpha_Add: 0.1
+    - _Alpha_Sub: 0.5
+    - _Blend_Opacity: 0.79
     - _Blend_Sharp: 1
     - _Divide_Color: 2
-    - _Fresnel_Power: 18.03
-    - _Noise_sub: 0.308
+    - _Fresnel_Power: 1.88
+    - _Noise_Scale: 5
+    - _Noise_Speed: 0.3
+    - _Noise_sub: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors: []
