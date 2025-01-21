@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PressToJoinManager : MonoBehaviour
 {
@@ -19,34 +21,49 @@ public class PressToJoinManager : MonoBehaviour
 
     private bool canStart = false;
 
+    void Start(){
+        DontDestroyOnLoad(this.gameObject);
+        SceneManager.activeSceneChanged += ChangedActiveScene;
+    }
+
+    void ChangedActiveScene(Scene current, Scene next){
+        if(next.name == "Game"){
+            List<PlayerStats> playersStats = new List<PlayerStats>();
+            foreach(PlayerItem playerItem in playerList){
+                playersStats.Add(new PlayerStats(){playerId = playerItem.playerId, playerTeam = playerItem.actualTeam});
+            }
+            GameManager.Instance.GetPlayers(playersStats, this.gameObject);
+        }
+        else {
+            Destroy(this.gameObject);
+        }
+    }
+
     private void Update() {
         if(!ReInput.isReady) return;
         AssignJoysticksToPlayers();
+
     }
 
     private void AssignJoysticksToPlayers() {
-
-        // Check all joysticks for a button press and assign it tp
-        // the first Player foudn without a joystick
         IList<Joystick> joysticks = ReInput.controllers.Joysticks;
         for(int i = 0; i < joysticks.Count; i++) {
 
             Joystick joystick = joysticks[i];
-            if(ReInput.controllers.IsControllerAssigned(joystick.type, joystick.id)) continue; // joystick is already assigned to a Player
-
-            // Chec if a button was pressed on the joystick
-            if(joystick.GetAnyButtonDown()) {
-
-                // Find the next Player without a Joystick
-                Player player = FindPlayerWithoutJoystick();
-                if(player == null) return; // no free joysticks
-
-                // Assign the joystick to this Player
-                player.controllers.AddController(joystick, false);
-                Debug.Log("Player find id : " + player.id);
-
-                AddPlayerItem(player.id);
+            if(ReInput.controllers.IsControllerAssigned(joystick.type, joystick.id)) continue; 
+            if(joystick.GetButtonDown(0) && playerList.Count == 0){
+                SceneManager.LoadScene("Main Menu");
             }
+            else if(joystick.GetAnyButtonDown()) {
+
+                Player player = FindPlayerWithoutJoystick();
+                if(player == null) return;
+
+                player.controllers.AddController(joystick, false);
+
+                AddPlayerItem(player.id, joystick);
+            }
+            
         }
 
         if(CanStart() != canStart){
@@ -56,11 +73,6 @@ public class PressToJoinManager : MonoBehaviour
 
     }
 
-    public bool CanStart(){
-        return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
-    }
-
-    // Searches all Players to find the next Player without a Joystick assigned
     private Player FindPlayerWithoutJoystick() {
         IList<Player> players = ReInput.players.Players;
         for(int i = 0; i < players.Count; i++) {
@@ -69,19 +81,23 @@ public class PressToJoinManager : MonoBehaviour
         }
         return null;
     }
-    
-    private void AddPlayerItem(int playerId){
+
+    public bool CanStart(){
+        return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
+    }
+
+    private void AddPlayerItem(int playerId, Joystick joystick){
         GameObject playerItem = Instantiate(playerItemPrefab, Vector3.zero, Quaternion.identity, selectorParent.GetChild(playerId));
         playerItem.transform.localPosition = Vector3.zero;
 
         playerItem.GetComponent<PlayerItem>().pressToJoinManager = this;
         playerItem.GetComponent<PlayerItem>().GetPlayerId(playerId);
+        playerItem.GetComponent<PlayerItem>().GetJoystickId(joystick.id);
 
         playerList.Add(playerItem.GetComponent<PlayerItem>());
     }
-    public void RemovePlayer(int playerId, GameObject playerToDestroy){
-        Debug.Log("Remove player : " + playerId);
-        
+
+    public void RemovePlayer(int playerId, GameObject playerToDestroy, int joystickId){
         Team actualTeam = playerToDestroy.GetComponent<PlayerItem>().actualTeam;
 
         leftTeamCount -= actualTeam == Team.Left ? 1 : 0;
@@ -91,9 +107,7 @@ public class PressToJoinManager : MonoBehaviour
 
         Destroy(playerToDestroy);
         Player player = ReInput.players.GetPlayer(playerId);
-        player.controllers.RemoveController(ControllerType.Joystick, 0);
-
-        
+        player.controllers.RemoveController(ControllerType.Joystick, joystickId);
     }
 
     public void ChangeTeam(Team newTeam, GameObject playerObject, int playerId){
@@ -116,8 +130,12 @@ public class PressToJoinManager : MonoBehaviour
         }
 
         playerObject.transform.localPosition = Vector3.zero;
+    }
 
-
+    public void TryToStart(){
+        if(canStart){
+            SceneManager.LoadScene("Game");
+        }
     }
 }
 

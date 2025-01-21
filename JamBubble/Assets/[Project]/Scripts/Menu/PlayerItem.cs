@@ -6,17 +6,26 @@ using Rewired;
 public class PlayerItem : MonoBehaviour
 {
     public Rewired.Player player;
+    private int joystickId;
+    public int playerId;
+
     public PressToJoinManager pressToJoinManager;
     public Team actualTeam;
 
     private float timeBeforeCanChangeTeam;
     private bool canChangeTeam = true;
 
+
     public GameObject leftArrow;
     public GameObject rightArrow;
 
     public void GetPlayerId(int playerId){
         player = ReInput.players.GetPlayer(playerId);
+        this.playerId = playerId;
+    }
+
+    public void GetJoystickId(int joystickId){
+        this.joystickId = joystickId;
     }
 
     void Update(){
@@ -41,7 +50,10 @@ public class PlayerItem : MonoBehaviour
 
     private void PlayerInput(){
         if(player.GetButtonDown("Back")){
-            pressToJoinManager.RemovePlayer(player.id, this.gameObject);
+            pressToJoinManager.RemovePlayer(player.id, this.gameObject, joystickId);
+        }
+        if(player.GetButtonDown("Start")){
+            pressToJoinManager.TryToStart();
         }
 
         if(!canChangeTeam) return;
