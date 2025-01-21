@@ -14,7 +14,6 @@ public class PlayerControler : MonoBehaviour
     {
         _player = GetComponent<PlayerManager>().player;
         _rigidbody = GetComponent<Rigidbody>();
-        _weapon = GetComponentInChildren<Weapon>();
     }
 
     private void Update()
@@ -32,6 +31,7 @@ public class PlayerControler : MonoBehaviour
 
     private void Aim()
     {
+        if (_aimInput == Vector3.zero) return;
         transform.forward = Vector3.Lerp(transform.forward, _aimInput, Time.deltaTime * _aimSpeed);
     }
 
@@ -48,6 +48,11 @@ public class PlayerControler : MonoBehaviour
     {
         _canShoot = canShoot;
         _canAim = canAim;
+    }
+
+    public void SetWeapon(Weapon weapon)
+    {
+        _weapon = weapon;
     }
 }
 

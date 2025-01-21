@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -8,6 +7,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float _shootPerSecond;
     [SerializeField] private float _selfPushForce;
     private float _shootTime;
+
+    private void Start()
+    {
+        transform.parent.GetComponent<PlayerControler>().SetWeapon(this);
+    }
 
     private void Update()
     {

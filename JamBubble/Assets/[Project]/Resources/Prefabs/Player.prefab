@@ -877,27 +877,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6880612300849101599}
     m_Modifications:
-    - target: {fileID: 635103257064056016, guid: 28af0ba0fd760384ca38aea61896e571,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.179
-      objectReference: {fileID: 0}
-    - target: {fileID: 635103257064056016, guid: 28af0ba0fd760384ca38aea61896e571,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.787
-      objectReference: {fileID: 0}
     - target: {fileID: 3241722754785763233, guid: 28af0ba0fd760384ca38aea61896e571,
         type: 3}
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
-    - target: {fileID: 5962559823882664823, guid: 28af0ba0fd760384ca38aea61896e571,
-        type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000,
-        type: 0}
     - target: {fileID: 8731659441789484794, guid: 28af0ba0fd760384ca38aea61896e571,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -948,8 +932,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4008316713878225141, guid: 28af0ba0fd760384ca38aea61896e571, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
