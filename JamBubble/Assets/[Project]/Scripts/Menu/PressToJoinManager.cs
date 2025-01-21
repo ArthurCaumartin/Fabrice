@@ -32,9 +32,10 @@ public class PressToJoinManager : MonoBehaviour
             foreach(PlayerItem playerItem in playerList){
                 playersStats.Add(new PlayerStats(){playerId = playerItem.playerId, playerTeam = playerItem.actualTeam});
             }
-            GameManager.Instance.GetPlayers(playersStats, this.gameObject);
+            GameManager.Instance.GetPlayers(playersStats);
+            Destroy(this.gameObject,.5f);
         }
-        else {
+        else if(next.name == "Main Menu" && current.name == "Character Selection") {
             Destroy(this.gameObject);
         }
     }
