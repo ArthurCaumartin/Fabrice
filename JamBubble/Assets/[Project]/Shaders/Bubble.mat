@@ -39,7 +39,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Add_Alpha: 0
-    - _Alpha_Add: 0.1
+    - _Alpha_Add: 0.175
     - _Alpha_Sub: 0.5
     - _Blend_Opacity: 0.79
     - _Blend_Sharp: 1
