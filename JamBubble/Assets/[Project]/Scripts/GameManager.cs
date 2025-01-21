@@ -5,6 +5,7 @@ using Rewired.Demos;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text leftPointText;
     [SerializeField] private TMP_Text rightPointText;
+    [SerializeField] CinemachineTargetGroup targetCam;
 
 
     private void Awake(){
@@ -59,11 +61,18 @@ public class GameManager : MonoBehaviour
                 EndGame();
             }
 
-            timerText.text = Mathf.Floor(gameTimer/60).ToString("00") + ":" + Mathf.RoundToInt(gameTimer%60).ToString("00");
+            SetTimerText();
+            
         }
     }
 
+    private void SetTimerText(){
+        timerText.text = Mathf.Floor(gameTimer/60).ToString("00") + ":" + Mathf.RoundToInt(gameTimer%60).ToString("00");
+    }
+
     private IEnumerator InitiliazeGame(){
+        SetTimerText();
+
         yield return new WaitUntil(() => playersTransfer);
         yield return new WaitUntil(() => InitializePlayers());
         SetPlayerMovement(false);
@@ -79,14 +88,14 @@ public class GameManager : MonoBehaviour
 
     private bool InitializePlayers(){
         foreach(PlayerStats playerStats in playersStats){
-            GameObject newPlayer = Instantiate(playerPrefab, new Vector3(playerStats.playerId, 0, playerStats.playerId), Quaternion.identity);
+            GameObject newPlayer = Instantiate(playerPrefab, new Vector3(playerStats.playerId, 1.2f, playerStats.playerId), Quaternion.identity);
             newPlayer.GetComponent<PlayerManager>().SetPlayerStats(playerStats.playerId, playerStats.playerTeam, playerStats.joystickId);
-            if(playerStats.playerTeam == Team.Left){
-                playersLeft.Add(newPlayer);
-            }
-            else {
-                playersRight.Add(newPlayer);
-            }
+
+            targetCam.AddMember(newPlayer.transform, .25f, 0f);
+
+            if(playerStats.playerTeam == Team.Left) playersLeft.Add(newPlayer);
+            else playersRight.Add(newPlayer);
+
             playersInGame.Add(newPlayer);
         }
         return true;
@@ -140,6 +149,7 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator StartPoint(){
+        SetTimerText();
         yield return new WaitUntil(() => PlaceAllPlayers());
         yield return new WaitForSeconds(1f);
         StartCoroutine(Coutdown(3));
