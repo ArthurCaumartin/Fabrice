@@ -7,8 +7,8 @@ public class PlayerControler : MonoBehaviour
     private Player _player;
     private Rigidbody _rigidbody;
     private Vector3 _aimInput;
-    private bool _canAim;
-    private bool _canShoot;
+    private bool _canAim = true;
+    private bool _canShoot = true;
 
     private void Start()
     {
