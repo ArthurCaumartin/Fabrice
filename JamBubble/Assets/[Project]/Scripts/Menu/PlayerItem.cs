@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using TMPro;
 
 public class PlayerItem : MonoBehaviour
 {
@@ -15,13 +16,15 @@ public class PlayerItem : MonoBehaviour
     private float timeBeforeCanChangeTeam;
     private bool canChangeTeam = true;
 
-
     public GameObject leftArrow;
     public GameObject rightArrow;
+
+    [SerializeField] private TMP_Text playerIdText;
 
     public void GetPlayerId(int playerId){
         player = ReInput.players.GetPlayer(playerId);
         this.playerId = playerId;
+        playerIdText.text = playerId.ToString("0");
     }
 
     public void GetJoystickId(int joystickId){
