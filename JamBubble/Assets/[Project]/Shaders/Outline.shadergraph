@@ -2609,7 +2609,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.009999999776482582,
+    "m_Value": 0.004000000189989805,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
