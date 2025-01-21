@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Initiliaze Players...");
         foreach(PlayerStats playerStats in playersStats){
             GameObject newPlayer = Instantiate(playerPrefab, new Vector3(playerStats.playerId, 0, playerStats.playerId), Quaternion.identity);
-            Debug.Log(playerStats.playerId + " : " + playerStats.playerTeam);
+            newPlayer.GetComponent<PlayerManager>().SetPlayerStats(playerStats.playerId, playerStats.playerTeam);
         }
         return true;
     }
