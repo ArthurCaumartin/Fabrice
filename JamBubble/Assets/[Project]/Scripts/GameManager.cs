@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake(){
         Instance = this;
+        FindAnyObjectByType<PressToJoinManager>().GetComponent<PressToJoinManager>().SetupGameManager();
         StartCoroutine(InitiliazeGame());
     }
 
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator InitiliazeGame(){
         yield return new WaitUntil(() => playersTransfer);
         yield return new WaitUntil(() => InitializePlayers());
+        SetPlayerMovement(false);
         yield return new WaitUntil(() => PlaceAllPlayers());
 
         // A REMETTRE !!
@@ -78,7 +80,7 @@ public class GameManager : MonoBehaviour
     private bool InitializePlayers(){
         foreach(PlayerStats playerStats in playersStats){
             GameObject newPlayer = Instantiate(playerPrefab, new Vector3(playerStats.playerId, 0, playerStats.playerId), Quaternion.identity);
-            //newPlayer.GetComponent<PlayerManager>().SetPlayerStats(playerStats.playerId, playerStats.playerTeam);
+            newPlayer.GetComponent<PlayerManager>().SetPlayerStats(playerStats.playerId, playerStats.playerTeam, playerStats.joystickId);
             if(playerStats.playerTeam == Team.Left){
                 playersLeft.Add(newPlayer);
             }
@@ -115,7 +117,7 @@ public class GameManager : MonoBehaviour
 
     private void SetPlayerMovement(bool active){
         foreach(GameObject player in playersInGame){
-            //player.GetComponent<PlayerController>().canControl = false;
+            player.GetComponent<PlayerControler>().EnableControler(active, true);
         }        
     }
 
@@ -134,11 +136,11 @@ public class GameManager : MonoBehaviour
         SetPlayerMovement(false);
 
         yield return new WaitForSeconds(2f);
-        yield return new WaitUntil(() => PlaceAllPlayers());
         StartCoroutine(StartPoint());
     }
 
     public IEnumerator StartPoint(){
+        yield return new WaitUntil(() => PlaceAllPlayers());
         yield return new WaitForSeconds(1f);
         StartCoroutine(Coutdown(3));
         yield return new WaitForSeconds(3f);
@@ -166,6 +168,7 @@ public class GameManager : MonoBehaviour
             // TEMPS ADDIITIONNEL
             gameTimer = 60;
             additionnalTime = true;
+            
             StartCoroutine(StartPoint());
         }
     }

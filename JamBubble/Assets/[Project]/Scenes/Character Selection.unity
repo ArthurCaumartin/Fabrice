@@ -3689,6 +3689,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7769783016322876656, guid: e6bff7c9564d287468f57e7ba54b406f,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[1]._actionId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769783016322876656, guid: e6bff7c9564d287468f57e7ba54b406f,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[2]._actionId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769783016322876656, guid: e6bff7c9564d287468f57e7ba54b406f,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[1]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769783016322876656, guid: e6bff7c9564d287468f57e7ba54b406f,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[2]._elementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769783016322876656, guid: e6bff7c9564d287468f57e7ba54b406f,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[1]._elementIdentifierId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769783016322876656, guid: e6bff7c9564d287468f57e7ba54b406f,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[2]._elementIdentifierId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8418959302712221107, guid: e6bff7c9564d287468f57e7ba54b406f,
         type: 3}
       propertyPath: m_Name

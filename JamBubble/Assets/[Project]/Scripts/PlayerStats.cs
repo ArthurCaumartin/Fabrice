@@ -5,5 +5,6 @@ using UnityEngine;
 public class PlayerStats
 {
     public int playerId;
+    public int joystickId;
     public Team playerTeam;
 }
