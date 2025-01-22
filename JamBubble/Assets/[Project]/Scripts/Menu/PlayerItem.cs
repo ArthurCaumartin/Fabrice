@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 using TMPro;
+using DG.Tweening;
 
 public class PlayerItem : MonoBehaviour
 {
@@ -60,8 +61,10 @@ public class PlayerItem : MonoBehaviour
         }
 
         if(!canChangeTeam) return;
+        DOTween.Kill(2, true);
 
         if(player.GetAxisRaw("Horizontal") >= .5f){
+            transform.DOPunchRotation(new Vector3(0,0,1) * 10f, .25f, 20, 1).SetId(2);
             if(actualTeam == Team.None){
                 pressToJoinManager.ChangeTeam(Team.Right, this.gameObject, player.id);
             }
@@ -70,6 +73,7 @@ public class PlayerItem : MonoBehaviour
             }
         }
         else if(player.GetAxisRaw("Horizontal") <= -.5f){
+            transform.DOPunchRotation(new Vector3(0,0,-1) * 10f, .25f, 20, 1).SetId(2);
             if(actualTeam == Team.None){
                 pressToJoinManager.ChangeTeam(Team.Left, this.gameObject, player.id);
             }
