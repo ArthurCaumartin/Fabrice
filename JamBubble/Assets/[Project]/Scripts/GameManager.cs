@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private int playersReady = 0;
 
     [Header("Params")]
+    [SerializeField] private Transform ball;
     public float gameTimer = 60;
 
     public int leftPoint = 0;
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text leftPointEndText;
     [SerializeField] private TMP_Text rightPointEndText;
     [SerializeField] private GameObject additionalTimeObject;
+    [SerializeField] private GameObject goalCanvas;
+    [SerializeField] private TMP_Text teamNameText;
     [SerializeField] CinemachineTargetGroup targetCam;
     [SerializeField] private GameObject gameCamera;
 
@@ -93,7 +96,7 @@ public class GameManager : MonoBehaviour
         
         readyPanel.transform.DOLocalMoveY(-735f,.25f).SetEase(Ease.OutBounce);
         scoreboard.SetActive(true);
-        scoreboard.transform.DOLocalMoveY(540,.5f).From(640).SetEase(Ease.OutBounce);
+        scoreboard.transform.DOLocalMoveY(525,.5f).From(640).SetEase(Ease.OutBounce);
 
         yield return new WaitForSeconds(.25f);
         DisableReadyUI();
@@ -116,7 +119,6 @@ public class GameManager : MonoBehaviour
     }
 
     private bool PlaceAllPlayers(){
-        
         for(int i = 0; i < playersLeft.Count; i++){
             playersLeft[i].transform.position = leftStartPos[i].position;
             Physics.SyncTransforms();
@@ -125,6 +127,12 @@ public class GameManager : MonoBehaviour
             playersRight[i].transform.position = rightStartPos[i].position;
             Physics.SyncTransforms();
         }      
+
+        ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        ball.position = new Vector3(0,3,0);
+        Physics.SyncTransforms();
+
         return true;
     }
 
@@ -151,6 +159,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddPoint(Team teamPoint){
+        ControllerVibrationEveryone(.5f,1f);
+        goalCanvas.SetActive(true);
+
+        teamNameText.text = teamPoint == Team.Left ? "Shark" : "Fish";
+        teamNameText.color = teamPoint == Team.Left ? Color.cyan : Color.red;
+
+        goalCanvas.transform.DOLocalMoveY(0f, 1f).From(1100).SetEase(Ease.OutElastic);
+
         leftPoint += teamPoint == Team.Left ? 1 : 0;
         rightPoint += teamPoint == Team.Right ? 1 : 0;
 
@@ -160,12 +176,28 @@ public class GameManager : MonoBehaviour
         StartCoroutine(EndPoint());
     }
 
+    public void ControllerVibrationEveryone(float force, float duration){
+        foreach(GameObject _player in playersInGame){
+            ControllerVibration(_player.GetComponent<PlayerManager>().joystickId, force, duration);
+        }
+    }
+
+    public void ControllerVibration(int joystickId, float force, float duration){
+        Joystick joystick = ReInput.controllers.GetJoystick(joystickId);
+        if(!joystick.supportsVibration) return;
+        if(joystick.vibrationMotorCount > 0) joystick.SetVibration(0, force, duration); // 1 second duration
+    }
+
     public IEnumerator EndPoint(){
         onGame = false;
         SetPlayerMovement(false);
 
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(StartPoint());
+        yield return new WaitForSeconds(4f);
+        goalCanvas.SetActive(false);
+        if(!additionnalTime) StartCoroutine(StartPoint());
+        else {
+            EndGame();
+        }
     }
 
     public IEnumerator StartPoint(){
@@ -174,13 +206,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(Coutdown(3));
         yield return new WaitForSeconds(3f);
-        //additionalTimeObject.SetActive(false);
         SetPlayerMovement(true);
         onGame = true;
     }
 
     private IEnumerator Coutdown(int coutdown){
         for(int i = coutdown; i >= 0; i--){
+            ControllerVibrationEveryone(.25f,.5f);
             countdownText.SetActive(i > 0 ? true : false);
             countdownText.GetComponent<TMP_Text>().text = i.ToString("0");
             yield return new WaitForSeconds(1);            

@@ -13,7 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - _GRADATIONMODE_GRADATION
+  - _GRADATIONMODE_CONST
   - _PATTERNTYPE_STRIPE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -33,16 +33,16 @@ Material:
     m_Floats:
     - _ColorMask: 15
     - _ColorWeight: 0.025
-    - _ContrastWeight: 0.1
+    - _ContrastWeight: 0.25
     - _DotSize: 0.5
     - _Dotted: 0
     - _EdgeLight: 1
     - _EdgeShining: 1.5
-    - _EdgeWidth: 0.005
-    - _GradationMode: 0
+    - _EdgeWidth: 1.38
+    - _GradationMode: 1
     - _IsEdgeShining: 0
     - _IsSubColor: 0
-    - _PatternDensity: 0.25
+    - _PatternDensity: 0.3
     - _PatternMoveDir: 0
     - _PatternRotate: 0
     - _PatternSize: 0.25

@@ -61,10 +61,10 @@ public class PlayerItem : MonoBehaviour
         }
 
         if(!canChangeTeam) return;
-        DOTween.Kill(2, true);
+        DOTween.Kill(playerId, true);
 
         if(player.GetAxisRaw("Horizontal") >= .5f){
-            transform.DOPunchRotation(new Vector3(0,0,1) * 10f, .25f, 20, 1).SetId(2);
+            transform.DOPunchRotation(new Vector3(0,0,1) * 10f, .25f, 20, 1).SetId(playerId);
             if(actualTeam == Team.None){
                 pressToJoinManager.ChangeTeam(Team.Right, this.gameObject, player.id);
             }

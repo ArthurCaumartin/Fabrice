@@ -52,6 +52,7 @@ public class PressToJoinManager : MonoBehaviour
                 Player player = FindPlayerWithoutJoystick();
                 if(player == null) return;
 
+                joystick.SetVibration(0, .5f, .5f);
                 player.controllers.AddController(joystick, false);
 
                 AddPlayerItem(player.id, joystick);
