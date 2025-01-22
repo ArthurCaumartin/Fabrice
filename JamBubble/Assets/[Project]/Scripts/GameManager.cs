@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text rightPointEndText;
     [SerializeField] private GameObject additionalTimeObject;
     [SerializeField] CinemachineTargetGroup targetCam;
+    [SerializeField] private GameObject gameCamera;
 
 
     private void Awake(){
@@ -55,6 +56,8 @@ public class GameManager : MonoBehaviour
         FindAnyObjectByType<PressToJoinManager>().GetComponent<PressToJoinManager>().SetupGameManager();
         StartCoroutine(InitiliazeGame());
     }
+
+
 
     public void GetPlayers(List<PlayerStats> playersStats){
         this.playersStats = playersStats;
@@ -208,10 +211,10 @@ public class GameManager : MonoBehaviour
         leftPointEndText.text = leftPoint.ToString("0");
         rightPointEndText.text = rightPoint.ToString("0");
         if(leftPoint > rightPoint){
-            leftPointEndText.transform.DOScale(1.5f, 0.5f).From(1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            leftPointEndText.transform.DOScale(1.1f, 0.5f).From(1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         }
         else if(rightPoint > leftPoint){
-            rightPointText.transform.DOScale(1.5f, 0.5f).From(1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            rightPointText.transform.DOScale(1.1f, 0.5f).From(1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         }
     }
 
