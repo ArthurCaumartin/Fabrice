@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerItem : MonoBehaviour
 {
     public Rewired.Player player;
-    private int joystickId;
+    public int joystickId;
     public int playerId;
 
     public PressToJoinManager pressToJoinManager;

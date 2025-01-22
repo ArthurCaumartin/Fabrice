@@ -20,28 +20,20 @@ public class PressToJoinManager : MonoBehaviour
     private int rightTeamCount = 0;
 
     private bool canStart = false;
+    private bool canJoin = true;
 
-    void Start(){
-        DontDestroyOnLoad(this.gameObject);
-        SceneManager.activeSceneChanged += ChangedActiveScene;
-    }
 
-    void ChangedActiveScene(Scene current, Scene next){
-        if(next.name == "Game"){
-            List<PlayerStats> playersStats = new List<PlayerStats>();
-            foreach(PlayerItem playerItem in playerList){
-                playersStats.Add(new PlayerStats(){playerId = playerItem.playerId, playerTeam = playerItem.actualTeam});
-            }
-            GameManager.Instance.GetPlayers(playersStats);
-            Destroy(this.gameObject,.5f);
+    public void SetupGameManager(){
+        List<PlayerStats> playersStats = new List<PlayerStats>();
+        foreach(PlayerItem playerItem in playerList){
+            playersStats.Add(new PlayerStats(){playerId = playerItem.playerId, playerTeam = playerItem.actualTeam, joystickId = playerItem.joystickId});
         }
-        else if(next.name == "Main Menu" && current.name == "Character Selection") {
-            Destroy(this.gameObject);
-        }
+        GameManager.Instance.GetPlayers(playersStats);
+        Destroy(this.gameObject,.5f);
     }
 
     private void Update() {
-        if(!ReInput.isReady) return;
+        if(!ReInput.isReady || !canJoin) return;
         AssignJoysticksToPlayers();
 
     }
@@ -52,7 +44,7 @@ public class PressToJoinManager : MonoBehaviour
 
             Joystick joystick = joysticks[i];
             if(ReInput.controllers.IsControllerAssigned(joystick.type, joystick.id)) continue; 
-            if(joystick.GetButtonDown(0) && playerList.Count == 0){
+            if(joystick.GetButtonDown(1) && playerList.Count == 0){
                 SceneManager.LoadScene("Main Menu");
             }
             else if(joystick.GetAnyButtonDown()) {
@@ -135,6 +127,8 @@ public class PressToJoinManager : MonoBehaviour
 
     public void TryToStart(){
         if(canStart){
+            canJoin = false;
+            DontDestroyOnLoad(this.gameObject);
             SceneManager.LoadScene("Game");
         }
     }
