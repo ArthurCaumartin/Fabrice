@@ -18,7 +18,7 @@ public class PowerUp : MonoBehaviour
 
     private void Animation()
     {
-        transform.localPosition = new Vector3(0, Mathf.InverseLerp(-1, 1, Mathf.Sin(Time.time * _speed * _randomness)), 0);
+        transform.localPosition = new Vector3(0, _yOffSet * Mathf.InverseLerp(-1, 1, Mathf.Sin(Time.time * _speed * _randomness)), 0);
         transform.Rotate(new Vector3(0, 5 * _speed * Time.deltaTime * _randomness, 0));
     }
 
@@ -31,6 +31,7 @@ public class PowerUp : MonoBehaviour
 
     public virtual void OnGrab(GameObject playerRef)
     {
+        //TODO add pop particle 
         Destroy(gameObject);
     }
 }
