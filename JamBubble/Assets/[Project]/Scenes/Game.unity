@@ -494,6 +494,7 @@ MonoBehaviour:
   rightPointEndText: {fileID: 1243391592}
   additionalTimeObject: {fileID: 1498031410}
   targetCam: {fileID: 1001728269}
+  gameCamera: {fileID: 0}
 --- !u!1 &335029542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,7 +1579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &710600705
 RectTransform:
   m_ObjectHideFlags: 0
