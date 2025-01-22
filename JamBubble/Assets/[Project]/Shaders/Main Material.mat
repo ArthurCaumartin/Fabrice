@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water Reflexion
+  m_Name: Main Material
   m_Shader: {fileID: -6465566751694194690, guid: 6a77ab0ad25fa21468d31d374e354fe5,
     type: 3}
   m_Parent: {fileID: 0}
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_6776ed671e5943c68cd0e07e83baa8b7_Out_0_Texture2D:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6ff66df0ee9f6b04aada74c91f035abb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -57,7 +57,7 @@ Material:
     - _Water_Reflexion_Speed: 0.2
     - _Water_reflexion: 1
     m_Colors:
-    - _Base_Color: {r: 1, g: 0.72612363, b: 0.08018869, a: 1}
+    - _Base_Color: {r: 1, g: 0.7474227, b: 0, a: 1}
     - _Color: {r: 0.5518868, g: 1, b: 0.9713785, a: 0}
     - _Nothing: {r: 0, g: 0, b: 0, a: 0}
     - _Water_Reflexion_Color: {r: 0.9333749, g: 1, b: 0.4764151, a: 1}
