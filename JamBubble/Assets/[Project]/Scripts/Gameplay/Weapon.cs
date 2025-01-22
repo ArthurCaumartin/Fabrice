@@ -6,10 +6,13 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Projectile _projectile;
     [SerializeField] private float _shootPerSecond;
     [SerializeField] private float _selfPushForce;
+    [SerializeField] private float _bubbleDecayPerShot = .01f;
     private float _shootTime;
+    private BubbleControler _bubbleControler;
 
     private void Start()
     {
+        _bubbleControler = transform.parent.GetComponent<BubbleControler>();
         transform.parent.GetComponent<PlayerControler>().SetWeapon(this);
     }
 
@@ -28,6 +31,7 @@ public class Weapon : MonoBehaviour
 
         _shootTime = 0;
         pushForce = _selfPushForce;
+        _bubbleControler?.UpdateSize(-_bubbleDecayPerShot);
         InstantiateProjectile();
     }
 

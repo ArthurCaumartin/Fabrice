@@ -9,9 +9,11 @@ public class PlayerControler : MonoBehaviour
     private Vector3 _aimInput;
     private bool _canAim = true;
     private bool _canShoot = true;
+    private SphereCollider _sphereCollider;
 
     private void Start()
     {
+        _sphereCollider = GetComponent<SphereCollider>();
         _player = GetComponent<PlayerManager>().player;
         _rigidbody = GetComponent<Rigidbody>();
     }
@@ -40,7 +42,7 @@ public class PlayerControler : MonoBehaviour
         if (_player.GetButton("Shoot"))
         {
             _weapon.Shoot(out float pushForce);
-            _rigidbody.AddForce(-transform.forward * pushForce, ForceMode.Impulse);
+            _rigidbody.AddForce(-transform.forward * pushForce * _sphereCollider.radius, ForceMode.Impulse);
         }
     }
 
@@ -55,5 +57,3 @@ public class PlayerControler : MonoBehaviour
         _weapon = weapon;
     }
 }
-
-
