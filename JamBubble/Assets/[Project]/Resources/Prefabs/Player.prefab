@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6880612300849101599}
   - component: {fileID: 2652731098916792239}
   - component: {fileID: 1108443496986272948}
+  - component: {fileID: 5545540540054172974}
   - component: {fileID: 7549875747127643010}
   - component: {fileID: 3880972964266208914}
   m_Layer: 0
@@ -55,6 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTeam: 1
   playerID: 0
+  joystickId: 0
 --- !u!114 &1108443496986272948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +70,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aimSpeed: 58.7
+--- !u!114 &5545540540054172974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117262930735353041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb3c9325ba13f441a0004c552bd7bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetSize: 2
+  _sizeChangeSpeed: 5
+  _sizeDecayPerSecond: 0.25
+  _minSize: 2
+  _maxSize: 3.53
 --- !u!54 &7549875747127643010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,7 +133,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.2
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2203652307617254370
 GameObject:
@@ -801,7 +820,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6880612300849101599}
