@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using Cinemachine;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Stats")]
     public bool onGame = false;
+    public bool endGame = false;
     private bool additionnalTime = false;
 
     public List<GameObject> playersInGame = new List<GameObject>();
@@ -21,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private bool playersTransfer = false;
     private List<PlayerStats> playersStats = new List<PlayerStats>();
-    private List<PlayerStats> playersReady = new List<PlayerStats>();
+    private int playersReady = 0;
 
     [Header("Params")]
     public float gameTimer = 60;
@@ -36,9 +39,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject readyPanel;
     [SerializeField] private GameObject countdownText;
+    [SerializeField] private GameObject scoreboard;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text leftPointText;
     [SerializeField] private TMP_Text rightPointText;
+    [SerializeField] private GameObject endCanvas;
+    [SerializeField] private TMP_Text leftPointEndText;
+    [SerializeField] private TMP_Text rightPointEndText;
+    [SerializeField] private GameObject additionalTimeObject;
     [SerializeField] CinemachineTargetGroup targetCam;
 
 
@@ -75,14 +83,17 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitUntil(() => playersTransfer);
         yield return new WaitUntil(() => InitializePlayers());
-        SetPlayerMovement(false);
         yield return new WaitUntil(() => PlaceAllPlayers());
+        SetPlayerMovement(false);
+        
+        yield return new WaitUntil(() => GetAllPlayersReady());
+        
+        readyPanel.transform.DOLocalMoveY(-735f,.25f).SetEase(Ease.OutBounce);
+        scoreboard.SetActive(true);
+        scoreboard.transform.DOLocalMoveY(540,.5f).From(640).SetEase(Ease.OutBounce);
 
-        // A REMETTRE !!
-        //yield return new WaitUntil(() => GetAllPlayersReady());
+        yield return new WaitForSeconds(.25f);
         DisableReadyUI();
-
-        yield return new WaitForSeconds(1f);
         StartGame();
     }
 
@@ -105,15 +116,21 @@ public class GameManager : MonoBehaviour
         
         for(int i = 0; i < playersLeft.Count; i++){
             playersLeft[i].transform.position = leftStartPos[i].position;
+            Physics.SyncTransforms();
         }
         for(int i = 0; i < playersRight.Count; i++){
             playersRight[i].transform.position = rightStartPos[i].position;
+            Physics.SyncTransforms();
         }      
         return true;
     }
 
-    private bool GetAllPlayersReady(){
-        return playersReady.Count == playersInGame.Count;
+    public void AddReadyPlayer(){
+        playersReady++;
+    }
+
+    public bool GetAllPlayersReady(){
+        return playersReady == playersInGame.Count;
     }
 
     private void DisableReadyUI(){
@@ -135,7 +152,7 @@ public class GameManager : MonoBehaviour
         rightPoint += teamPoint == Team.Right ? 1 : 0;
 
         leftPointText.text = leftPoint.ToString("0");
-        rightPointText.text = leftPoint.ToString("0");
+        rightPointText.text = rightPoint.ToString("0");
 
         StartCoroutine(EndPoint());
     }
@@ -154,6 +171,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(Coutdown(3));
         yield return new WaitForSeconds(3f);
+        //additionalTimeObject.SetActive(false);
         SetPlayerMovement(true);
         onGame = true;
     }
@@ -171,15 +189,33 @@ public class GameManager : MonoBehaviour
         SetPlayerMovement(false);
 
         if(leftPoint != rightPoint || additionnalTime){
-            // FINIR LA GAME
-            
+            endGame = true;
+            DisplayEndUI();
         }
         else{
-            // TEMPS ADDIITIONNEL
             gameTimer = 60;
             additionnalTime = true;
+            additionalTimeObject.SetActive(true);
+            additionalTimeObject.transform.DOLocalMoveY(425, 1f).From(615).SetEase(Ease.OutElastic);
             
             StartCoroutine(StartPoint());
         }
+    }
+
+    private void DisplayEndUI(){
+        endCanvas.SetActive(true);
+        endCanvas.transform.DOLocalMoveY(0f, 1f).From(1100).SetEase(Ease.OutElastic);
+        leftPointEndText.text = leftPoint.ToString("0");
+        rightPointEndText.text = rightPoint.ToString("0");
+        if(leftPoint > rightPoint){
+            leftPointEndText.transform.DOScale(1.5f, 0.5f).From(1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        }
+        else if(rightPoint > leftPoint){
+            rightPointText.transform.DOScale(1.5f, 0.5f).From(1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        }
+    }
+
+    public void LeaveGame(){
+        SceneManager.LoadScene("Main Menu");
     }
 }
