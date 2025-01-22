@@ -159,7 +159,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddPoint(Team teamPoint){
-        ControllerVibrationEveryone(.5f,1f);
+        AudioManager.Instance.PlaySFX("goal");
+        ControllerVibrationEveryone(.5f,1.5f);
         goalCanvas.SetActive(true);
 
         teamNameText.text = teamPoint == Team.Left ? "Shark" : "Fish";
@@ -185,6 +186,7 @@ public class GameManager : MonoBehaviour
     public void ControllerVibration(int joystickId, float force, float duration){
         Joystick joystick = ReInput.controllers.GetJoystick(joystickId);
         if(!joystick.supportsVibration) return;
+        joystick.StopVibration();
         if(joystick.vibrationMotorCount > 0) joystick.SetVibration(0, force, duration); // 1 second duration
     }
 
@@ -206,6 +208,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(Coutdown(3));
         yield return new WaitForSeconds(3f);
+        AudioManager.Instance.PlaySFX("start");
         SetPlayerMovement(true);
         onGame = true;
     }
@@ -222,10 +225,12 @@ public class GameManager : MonoBehaviour
     private void EndGame(){
         onGame = false;
         SetPlayerMovement(false);
+        AudioManager.Instance.PlaySFX("finish");
 
         if(leftPoint != rightPoint || additionnalTime){
             endGame = true;
             DisplayEndUI();
+            ControllerVibrationEveryone(.35f,1.5f);
         }
         else{
             gameTimer = 60;

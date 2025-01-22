@@ -56,4 +56,9 @@ public class PlayerControler : MonoBehaviour
     {
         _weapon = weapon;
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        GameManager.Instance.ControllerVibration(GetComponent<PlayerManager>().joystickId, collision.relativeVelocity.magnitude*0.01f, .1f);
+    }
 }
