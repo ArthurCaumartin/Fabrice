@@ -13,10 +13,13 @@ public class Weapon : MonoBehaviour
     private BubbleControler _bubbleControler;
     private bool _canShoot = true;
 
+    public float SelfPushForce { get => _selfPushForce; }
+
     private void Start()
     {
         _bubbleControler = transform.parent.GetComponent<BubbleControler>();
         transform.parent.GetComponent<PlayerControler>().SetWeapon(this);
+        _shootTime = 100;
     }
 
     private void Update()
@@ -36,6 +39,8 @@ public class Weapon : MonoBehaviour
             _bubbleControler?.UpdateSize(-_bubbleDecayPerShot);
             InstantiateProjectile();
         }
+
+        if(_projectile is Laser) pushForce = 0;
     }
 
     private void InstantiateProjectile()

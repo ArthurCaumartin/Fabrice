@@ -34,7 +34,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5507727415935109126}
+  - {fileID: 5534720332937352306}
   - {fileID: 1511834439091919244}
   - {fileID: 6719069143882533568}
   - {fileID: 6036468860983120723}
@@ -888,7 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereCollider: {fileID: 3880972964266208914}
---- !u!1001 &3837758581331080956
+--- !u!1001 &3882757287664741000
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -899,7 +899,7 @@ PrefabInstance:
     - target: {fileID: 3241722754785763233, guid: 28af0ba0fd760384ca38aea61896e571,
         type: 3}
       propertyPath: m_Name
-      value: Weapon
+      value: Weapon Base
       objectReference: {fileID: 0}
     - target: {fileID: 8731659441789484794, guid: 28af0ba0fd760384ca38aea61896e571,
         type: 3}
@@ -956,9 +956,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28af0ba0fd760384ca38aea61896e571, type: 3}
---- !u!4 &5507727415935109126 stripped
+--- !u!4 &5534720332937352306 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8731659441789484794, guid: 28af0ba0fd760384ca38aea61896e571,
     type: 3}
-  m_PrefabInstance: {fileID: 3837758581331080956}
+  m_PrefabInstance: {fileID: 3882757287664741000}
   m_PrefabAsset: {fileID: 0}

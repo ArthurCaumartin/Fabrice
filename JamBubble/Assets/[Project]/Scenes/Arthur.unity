@@ -659,17 +659,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4559997972418080203, guid: 1df2435a6256fc5469a09c934593bb7d,
-        type: 3}
-      propertyPath: _projectile
-      value: 
-      objectReference: {fileID: -5602378346150504363, guid: 8d8a91324cba6a649885f24ed024d604,
-        type: 3}
-    - target: {fileID: 4559997972418080203, guid: 1df2435a6256fc5469a09c934593bb7d,
-        type: 3}
-      propertyPath: _selfPushForce
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6880612300849101599, guid: 1df2435a6256fc5469a09c934593bb7d,
         type: 3}
       propertyPath: m_LocalPosition.x
