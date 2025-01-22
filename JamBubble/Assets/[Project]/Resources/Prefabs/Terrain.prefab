@@ -807,7 +807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7817456177655019195
 Transform:
   m_ObjectHideFlags: 0
@@ -843,6 +843,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnDelay: 0.02
   _prefabList:
+  - {fileID: 4911183384305310955, guid: 45e2dbc190dd9ca44b743741989ecf75, type: 3}
+  - {fileID: 4911183384305310955, guid: 2c2addb960756db4db8870b70bac0b97, type: 3}
+  - {fileID: 4911183384305310955, guid: aeda93582f2f9404aaffdcdec4b2a171, type: 3}
+  - {fileID: 4911183384305310955, guid: 69a2cd39d21ea7544965417b2b83fd98, type: 3}
   - {fileID: 4911183384305310955, guid: 69a2cd39d21ea7544965417b2b83fd98, type: 3}
   - {fileID: 4911183384305310955, guid: 69a2cd39d21ea7544965417b2b83fd98, type: 3}
   _spawnPointArray:

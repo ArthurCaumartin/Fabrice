@@ -10,7 +10,7 @@ public class BubbleControler : MonoBehaviour
 
     [Header("Min/Max : ")]
     [SerializeField] private float _minSize = 2;
-    [SerializeField] private float _maxSize = 5; 
+    [SerializeField] private float _maxSize = 5;
     private SphereCollider _sphereCollider;
 
     private void Start()
@@ -28,6 +28,7 @@ public class BubbleControler : MonoBehaviour
     {
         _sphereCollider.radius = Mathf.Lerp(_sphereCollider.radius, _targetSize, Time.fixedDeltaTime * _sizeChangeSpeed);
         _targetSize -= _sizeDecayPerSecond * Time.fixedDeltaTime;
+        _targetSize = Mathf.Clamp(_targetSize, _minSize, _maxSize);
     }
 
     public void UpdateSize(float sizeToAdd)
