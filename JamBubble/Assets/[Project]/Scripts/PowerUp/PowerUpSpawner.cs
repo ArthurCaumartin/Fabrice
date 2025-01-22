@@ -1,36 +1,13 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class PowerUpSpawner : MonoBehaviour
+public class PowerUpSpawner : PowerUp
 {
-    [SerializeField] private float _spawnDelay = 10;
-    [SerializeField] private List<GameObject> _prefabList;
-    [SerializeField] private Transform[] _spawnPointArray;
-    private GameObject[] _spawnArray;
-    private float _spawnTime;
+    [Header("Spawner : ")]
+    [SerializeField] private GameObject _prefabToSpawn;
 
-    private void Start()
+    public override void OnGrab(GameObject playerRef)
     {
-        _spawnArray = new GameObject[_spawnPointArray.Length];
-    }
-
-    private void Update()
-    {
-        _spawnTime += Time.deltaTime;
-        if (_spawnTime >= _spawnDelay)
-        {
-            _spawnTime = 0;
-            SpawnObject();
-        }
-    }
-
-    public void SpawnObject()
-    {
-        int index = Random.Range(0, _spawnPointArray.Length);
-        if (_spawnArray[index] != null) return;
-
-        GameObject newPowerUp = Instantiate(_prefabList[Random.Range(0, _prefabList.Count)], _spawnPointArray[index]);
-        _spawnArray[index] = newPowerUp;
+        Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);
+        base.OnGrab(playerRef);
     }
 }
