@@ -58,6 +58,7 @@ MonoBehaviour:
   joystickId: 0
   playerText: {fileID: 8404186466471919452}
   readyText: {fileID: 2203652307617254370}
+  markerSprite: {fileID: 3714914977125888511}
 --- !u!114 &1108443496986272948
 MonoBehaviour:
   m_ObjectHideFlags: 0
