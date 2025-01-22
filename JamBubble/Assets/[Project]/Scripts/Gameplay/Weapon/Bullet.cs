@@ -1,17 +1,8 @@
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Bullet : Projectile
 {
-    public float _lifeTime = 1;
-    [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _pushForce;
-    private GameObject _shooterParent;
-
-    public void Initialize(GameObject shooter)
-    {
-        _shooterParent = shooter;
-        Destroy(gameObject, _lifeTime);
-    }
+    [SerializeField] private float _moveSpeed = 15;
 
     private void FixedUpdate()
     {

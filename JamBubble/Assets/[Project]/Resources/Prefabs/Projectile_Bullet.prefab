@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 7640707642191467472}
   - component: {fileID: 128593438421821308}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Projectile_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
