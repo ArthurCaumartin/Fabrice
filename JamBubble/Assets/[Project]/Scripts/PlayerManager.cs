@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private TMP_Text playerText;
     [SerializeField] private GameObject readyText;
+    [SerializeField] private SpriteRenderer markerSprite; 
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class PlayerManager : MonoBehaviour
         playerTeam = team;
 
         playerText.text = "J" + playerId.ToString("0");
+        playerText.color = playerTeam == Team.Left ? Color.cyan : Color.red;
+        markerSprite.color = playerTeam == Team.Left ? Color.cyan : Color.red;
     }
 
     private void Update(){
