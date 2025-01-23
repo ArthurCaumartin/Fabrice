@@ -19,19 +19,20 @@ public class LineFollow : MonoBehaviour
     private void OnValidate()
     {
         _line = GetComponent<LineRenderer>();
-        UpdatePos();
+        UpdatePos(1);
     }
 
     public void Update()
     {
         if (!_line || _player == null) Start();
         _inputMag = new Vector2(_player.GetAxis("Horizontal"), _player.GetAxis("Vertical")).magnitude;
-        UpdatePos();
+        UpdatePos(_inputMag);
     }
 
-    private void UpdatePos()
+    private void UpdatePos(float input)
     {
+        _line.enabled = input > 0;
         _line.SetPosition(0, transform.position);
-        _line.SetPosition(1, transform.position + (transform.forward * _lenght * _inputMag));
+        _line.SetPosition(1, transform.position + (transform.forward * _lenght * input));
     }
 }

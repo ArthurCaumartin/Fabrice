@@ -1574,11 +1574,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnDelay: 10
   _prefabList:
-  - {fileID: 4911183384305310955, guid: 45e2dbc190dd9ca44b743741989ecf75, type: 3}
   - {fileID: 4911183384305310955, guid: 2c2addb960756db4db8870b70bac0b97, type: 3}
   - {fileID: 4911183384305310955, guid: 69a2cd39d21ea7544965417b2b83fd98, type: 3}
   - {fileID: 4911183384305310955, guid: e6d96d5f6ba0a674f8afbadaad00c27a, type: 3}
-  - {fileID: 4911183384305310955, guid: 5fb2f5e8c9459264ba782a3f57235e9e, type: 3}
   - {fileID: 4911183384305310955, guid: 5fb2f5e8c9459264ba782a3f57235e9e, type: 3}
   _spawnPointArray:
   - {fileID: 3731917267217780687}

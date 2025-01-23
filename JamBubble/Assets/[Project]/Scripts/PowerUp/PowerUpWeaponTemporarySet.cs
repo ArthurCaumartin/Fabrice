@@ -9,8 +9,10 @@ public class PowerUpWeaponTemporarySet : PowerUp
     {
         if (playerRef.GetComponentsInChildren<Weapon>().Length > 1) return;
         playerRef.GetComponentInChildren<Weapon>().DisableWeaponForTime(_weaponToSwap.LifeTime);
-
         Instantiate(_weaponToSwap, playerRef.transform);
+        // GetComponent<Collider>().enabled = false;
+        // GetComponentInChildren<MeshRenderer>().gameObject.SetActive(false);
+        base.OnGrab(playerRef);
     }
 
 
