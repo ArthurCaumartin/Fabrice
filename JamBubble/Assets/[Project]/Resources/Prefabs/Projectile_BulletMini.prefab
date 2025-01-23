@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: -8912019441177645302}
   - component: {fileID: 128593438421821308}
   m_Layer: 0
-  m_Name: Projectile_BulletBase
+  m_Name: Projectile_BulletMini
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,9 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a66b05e29c81141883cece36999d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeTime: 1.5
-  _pushForce: 100
-  _moveSpeed: 50
+  _lifeTime: 1
+  _pushForce: 20
+  _moveSpeed: 30
 --- !u!135 &128593438421821308
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -193,11 +193,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeTime: 1.5
-  _pushForce: 269.6
+  _pushForce: 200
   _wallLayer:
     serializedVersion: 2
     m_Bits: 1024
-  _lenth: 50
+  _lenth: 100
   _gradient:
     serializedVersion: 2
     key0: {r: 0.6792453, g: 0.49021003, b: 0.49021003, a: 0}
