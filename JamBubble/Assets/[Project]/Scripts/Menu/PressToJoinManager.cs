@@ -22,6 +22,10 @@ public class PressToJoinManager : MonoBehaviour
     private bool canStart = false;
     private bool canJoin = true;
 
+    void Start(){
+        AudioManager.Instance?.StopMusic();
+        AudioManager.Instance?.PlayMusic("character");
+    }
 
     public void SetupGameManager(){
         List<PlayerStats> playersStats = new List<PlayerStats>();
@@ -78,8 +82,7 @@ public class PressToJoinManager : MonoBehaviour
     }
 
     public bool CanStart(){
-        return true;
-        //return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
+        return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
     }
 
     private void AddPlayerItem(int playerId, Joystick joystick){

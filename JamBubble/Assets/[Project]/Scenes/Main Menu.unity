@@ -341,7 +341,15 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: 23c5c257aac6f5343b3ea0c41ed9543c, type: 3}
   - soundId: ui_leave
     sound: {fileID: 8300000, guid: fd4c8bbbecbba8b4facf0db54275b499, type: 3}
-  musicSound: []
+  musicSound:
+  - soundId: game
+    sound: {fileID: 8300000, guid: 26e33c61d7ab0f949a06c48d57e822af, type: 3}
+  - soundId: menu
+    sound: {fileID: 8300000, guid: fc41507ea79d45e45be5970835080c12, type: 3}
+  - soundId: credit
+    sound: {fileID: 8300000, guid: a9a22504f6b09d342bd8a5e305135a42, type: 3}
+  - soundId: character
+    sound: {fileID: 8300000, guid: 0d2f05935e39f6241bda4d1cac7b0f85, type: 3}
   sfxSource: {fileID: 231247198}
   musicSource: {fileID: 231247197}
 --- !u!82 &231247197
@@ -356,7 +364,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
