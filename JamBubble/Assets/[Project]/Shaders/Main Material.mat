@@ -60,7 +60,7 @@ Material:
     - _Base_Color: {r: 1, g: 0.7474227, b: 0, a: 1}
     - _Color: {r: 0.5518868, g: 1, b: 0.9713785, a: 0}
     - _Nothing: {r: 0, g: 0, b: 0, a: 0}
-    - _Water_Reflexion_Color: {r: 0.9333749, g: 1, b: 0.4764151, a: 1}
+    - _Water_Reflexion_Color: {r: 0.49528307, g: 0.5660378, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5413970833441921634
 MonoBehaviour:
