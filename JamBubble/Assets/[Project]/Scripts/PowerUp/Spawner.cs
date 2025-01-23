@@ -17,6 +17,12 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.Instance && !GameManager.Instance.onGame)
+        {
+            _spawnTime = 0;
+            return;
+        }
+
         _spawnTime += Time.deltaTime;
         if (_spawnTime >= _spawnDelay)
         {
@@ -29,7 +35,7 @@ public class Spawner : MonoBehaviour
     {
         int index = Random.Range(0, _spawnPointArray.Length);
         if (_spawnArray[index] != null) return;
-
+        
         GameObject newPowerUp = Instantiate(_prefabList[Random.Range(0, _prefabList.Count)], _spawnPointArray[index]);
         _spawnArray[index] = newPowerUp;
         GameManager.Instance?.objectsToDestroy.Add(newPowerUp);

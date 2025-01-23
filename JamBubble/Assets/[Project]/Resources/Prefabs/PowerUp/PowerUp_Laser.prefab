@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1fa5ecf46d073447ac56b633ad74a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particle: {fileID: 7555245293088468189, guid: 7eb0d7d466f7ce94dae9ceca4c8c9b19,
+    type: 3}
   _yOffSet: 0.5
   _speed: 5
   _laser: {fileID: -5602378346150504363, guid: 8d8a91324cba6a649885f24ed024d604, type: 3}
