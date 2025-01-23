@@ -42,7 +42,7 @@ public class PlayerControler : MonoBehaviour
         if (_player.GetButton("Shoot"))
         {
             _weapon.Shoot(out float pushForce);
-            _rigidbody.AddForce(-transform.forward * pushForce * _sphereCollider.radius, ForceMode.Impulse);
+            _rigidbody.AddForce(-transform.forward * pushForce * GetComponent<BubbleControler>().ForceMult, ForceMode.Impulse);
         }
     }
 
@@ -59,6 +59,6 @@ public class PlayerControler : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        GameManager.Instance.ControllerVibration(GetComponent<PlayerManager>().joystickId, collision.relativeVelocity.magnitude*0.01f, .1f);
+        GameManager.Instance?.ControllerVibration(GetComponent<PlayerManager>().joystickId, collision.relativeVelocity.magnitude * 0.01f, .1f);
     }
 }
