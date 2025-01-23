@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
 
     public void AddPoint(Team teamPoint){
         Shake(1.5f, 1f);
-        AudioManager.Instance.PlaySFX("goal");
+        AudioManager.Instance.PlaySFX("goal", .5f);
         ControllerVibrationEveryone(.5f,1.5f);
         goalCanvas.SetActive(true);
 
@@ -220,7 +220,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(Coutdown(3));
         yield return new WaitForSeconds(3f);
-        AudioManager.Instance.PlaySFX("start");
+        AudioManager.Instance.PlaySFX("start", .5f);
         SetPlayerMovement(true);
         onGame = true;
     }
@@ -240,13 +240,13 @@ public class GameManager : MonoBehaviour
         
 
         if(leftPoint != rightPoint || additionnalTime){
-            AudioManager.Instance.PlaySFX("finish");
+            AudioManager.Instance.PlaySFX("finish", .5f);
             endGame = true;
             DisplayEndUI();
             ControllerVibrationEveryone(.35f,1.5f);
         }
         else{
-            AudioManager.Instance.PlaySFX("additional_time");
+            AudioManager.Instance.PlaySFX("additional_time", .5f);
             gameTimer = 60;
             additionnalTime = true;
             additionalTimeObject.SetActive(true);
