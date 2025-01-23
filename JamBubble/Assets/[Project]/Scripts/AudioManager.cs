@@ -24,10 +24,21 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(string name){
+    public void PlaySFX(string name, float volume = -1, float pitch = -1){
         Sound soundToPlay = Array.Find(sfxSound, sound => sound.soundId == name);
         if(soundToPlay != null){
-            sfxSource.PlayOneShot(soundToPlay.sound);
+            AudioSource audioSource = sfxSource;
+            if(volume != -1){
+                audioSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+                audioSource.volume = volume;
+                audioSource.pitch = pitch;
+                Destroy(audioSource, soundToPlay.sound.length);
+            }
+            else if(audioSource.isPlaying){
+                audioSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+                Destroy(audioSource, soundToPlay.sound.length);
+            }
+            audioSource.PlayOneShot(soundToPlay.sound);
         }
     }
 

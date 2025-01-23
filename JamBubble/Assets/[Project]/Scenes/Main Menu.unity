@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414738, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -323,6 +323,22 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: 8b89c5f0eab31ec49bfb645e5ab596ca, type: 3}
   - soundId: start
     sound: {fileID: 8300000, guid: 0e9176157b28b874381d8b483835d069, type: 3}
+  - soundId: additional_time
+    sound: {fileID: 8300000, guid: 0505c9bd920e7034abbfbcd24a281f46, type: 3}
+  - soundId: shoot
+    sound: {fileID: 8300000, guid: 36f5c96937f354348b5827d095e7cbad, type: 3}
+  - soundId: ui_click
+    sound: {fileID: 8300000, guid: b5c289ac11a2fbb428f7215f67969aef, type: 3}
+  - soundId: ui_select
+    sound: {fileID: 8300000, guid: 8d46dc27a83ede2488635a0d77aedd80, type: 3}
+  - soundId: ui_cancel
+    sound: {fileID: 8300000, guid: 7786cf221cb652347b59ca85781ded7d, type: 3}
+  - soundId: ui_move
+    sound: {fileID: 8300000, guid: 74c6cb5b210a4cd41988d9eba31d89ce, type: 3}
+  - soundId: ui_join
+    sound: {fileID: 8300000, guid: 23c5c257aac6f5343b3ea0c41ed9543c, type: 3}
+  - soundId: ui_leave
+    sound: {fileID: 8300000, guid: fd4c8bbbecbba8b4facf0db54275b499, type: 3}
   musicSound: []
   sfxSource: {fileID: 231247198}
   musicSource: {fileID: 231247197}
