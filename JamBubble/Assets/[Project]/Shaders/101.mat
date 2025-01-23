@@ -59,14 +59,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Float: 0.67
+    - _Float: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Water_Reflexion_Power: 1.7
     - _Water_Reflexion_Scale: 20
     - _Water_reflexion: 0
     m_Colors:
-    - _Color: {r: 1, g: 0.8074049, b: 0.24056602, a: 0}
+    - _Color: {r: 0.757914, g: 0.23921567, b: 1, a: 0}
     - _Water_Color_inversion: {r: 0.7924528, g: 0.38165557, b: 0.3700605, a: 0}
     - _Water_Reflexion_Color: {r: 0.051886797, g: 0.7493399, b: 1, a: 0}
   m_BuildTextureStacks: []
