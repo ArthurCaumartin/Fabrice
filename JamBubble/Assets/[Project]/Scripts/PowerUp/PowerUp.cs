@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem _particle;
     [Header("Animation :")]
     [SerializeField] private float _yOffSet = .5f;
     [SerializeField] private float _speed = 5;
@@ -31,6 +32,11 @@ public class PowerUp : MonoBehaviour
 
     public virtual void OnGrab(GameObject playerRef)
     {
+        if (_particle)
+        {
+            ParticleSystem p = Instantiate(_particle, transform.position, Quaternion.identity);
+            Destroy(p.gameObject, p.main.duration);
+        }
         //TODO add pop particle 
         Destroy(gameObject);
     }

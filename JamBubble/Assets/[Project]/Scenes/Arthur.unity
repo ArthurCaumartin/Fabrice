@@ -1265,13 +1265,19 @@ PrefabInstance:
     - target: {fileID: 2149796388716092569, guid: 30f4acc55cb7737429510beca8cac9ad,
         type: 3}
       propertyPath: _prefabList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2149796388716092569, guid: 30f4acc55cb7737429510beca8cac9ad,
         type: 3}
       propertyPath: _prefabList.Array.data[0]
       value: 
       objectReference: {fileID: 4911183384305310955, guid: 2c2addb960756db4db8870b70bac0b97,
+        type: 3}
+    - target: {fileID: 2149796388716092569, guid: 30f4acc55cb7737429510beca8cac9ad,
+        type: 3}
+      propertyPath: _prefabList.Array.data[1]
+      value: 
+      objectReference: {fileID: 4911183384305310955, guid: 69a2cd39d21ea7544965417b2b83fd98,
         type: 3}
     - target: {fileID: 2149796388716092569, guid: 30f4acc55cb7737429510beca8cac9ad,
         type: 3}
@@ -1426,11 +1432,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 95196836}
     m_Modifications:
-    - target: {fileID: 1586095080816233372, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
-      propertyPath: _lenght
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 3999140126434361581, guid: 0445f97a33baee140a8d55ea470a4aea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1488,16 +1489,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
-      propertyPath: m_Parameters.numCapVertices
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
       propertyPath: m_Positions.Array.data[0].x
       value: -9.69
       objectReference: {fileID: 0}
@@ -1525,46 +1516,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Positions.Array.data[1].z
       value: 2.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
-      propertyPath: m_Parameters.numCornerVertices
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.m_ColorSpace
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.19137076
-      objectReference: {fileID: 0}
-    - target: {fileID: 6438745144861839798, guid: 0445f97a33baee140a8d55ea470a4aea,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
