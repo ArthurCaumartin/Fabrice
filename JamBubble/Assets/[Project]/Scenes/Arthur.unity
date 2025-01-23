@@ -659,6 +659,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6719069143882533568, guid: 1df2435a6256fc5469a09c934593bb7d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719069143882533568, guid: 1df2435a6256fc5469a09c934593bb7d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719069143882533568, guid: 1df2435a6256fc5469a09c934593bb7d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6880612300849101599, guid: 1df2435a6256fc5469a09c934593bb7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1228,6 +1243,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2149796388716092569, guid: 30f4acc55cb7737429510beca8cac9ad,
         type: 3}
+      propertyPath: _spawnDelay
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149796388716092569, guid: 30f4acc55cb7737429510beca8cac9ad,
+        type: 3}
       propertyPath: _prefabList.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1235,7 +1255,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _prefabList.Array.data[0]
       value: 
-      objectReference: {fileID: 4911183384305310955, guid: e6d96d5f6ba0a674f8afbadaad00c27a,
+      objectReference: {fileID: 4911183384305310955, guid: 2c2addb960756db4db8870b70bac0b97,
         type: 3}
     - target: {fileID: 2149796388716092569, guid: 30f4acc55cb7737429510beca8cac9ad,
         type: 3}

@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _yOffSet: 0.5
   _speed: 5
-  _weaponToSwap: {fileID: 3241722754785763233, guid: 3e0bf069def101c45a8e3e28c6475f20,
+  _weaponToSwap: {fileID: 723435659922578231, guid: 3e0bf069def101c45a8e3e28c6475f20,
     type: 3}
 --- !u!65 &819983333763198404
 BoxCollider:
