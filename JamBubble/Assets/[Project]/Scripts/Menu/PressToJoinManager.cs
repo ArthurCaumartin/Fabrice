@@ -46,7 +46,8 @@ public class PressToJoinManager : MonoBehaviour
             if(ReInput.controllers.IsControllerAssigned(joystick.type, joystick.id)) continue; 
             if(joystick.GetButtonDown(1) && playerList.Count == 0){
                 AudioManager.Instance.PlaySFX("ui_cancel"); 
-                SceneManager.LoadScene("Main Menu");
+                TransitionManager.Instance.TransitionToScene("Main Menu");
+                Destroy(this);
             }
             else if(joystick.GetAnyButtonDown()) {
                 Player player = FindPlayerWithoutJoystick();
@@ -133,9 +134,10 @@ public class PressToJoinManager : MonoBehaviour
     public void TryToStart(){
         if(canStart){
             canJoin = false;
+            canStart = false;
             AudioManager.Instance.PlaySFX("ui_click"); 
             DontDestroyOnLoad(this.gameObject);
-            SceneManager.LoadScene("Game");
+            TransitionManager.Instance.TransitionToScene("Game");
         }
     }
 }
