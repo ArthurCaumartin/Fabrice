@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private float _spawnDelay = 10;
-    [SerializeField] private List<GameObject> _prefabList;
+    [SerializeField] private List<GameObject> _prefabList = new List<GameObject>();
     [SerializeField] private Transform[] _spawnPointArray;
     private GameObject[] _spawnArray;
     private float _spawnTime;

@@ -18,8 +18,8 @@ public class Laser : Projectile
     {
         _shooterParent = shooter;
         transform.parent = shooter.transform;
-        shooter.GetComponentInChildren<Weapon>().DisableWeaponForTime(_lifeTime);
-
+        // shooter.GetComponentInChildren<Weapon>().DisableWeaponForTime(_lifeTime);
+        _shooterParent.GetComponent<PlayerControler>().EnableControler(false, true);
         _lineRenderer = GetComponentInChildren<LineRenderer>();
     }
 
@@ -63,6 +63,8 @@ public class Laser : Projectile
         for (int i = 1; i < path.Length; i++)
         {
             Vector3 dir = path[i] - path[i - 1];
+
+            //TODO faire un shpere cast
             RaycastHit[] hits = Physics.RaycastAll(path[i - 1], dir, Vector3.Distance(path[i - 1], path[i]));
 
             Debug.DrawRay(path[i - 1], dir, Color.green, 5f);
@@ -81,6 +83,7 @@ public class Laser : Projectile
         transform.parent.GetComponent<Rigidbody>()
         .AddForce(-transform.parent.forward * transform.parent.GetComponentInChildren<Weapon>().SelfPushForce, ForceMode.Impulse);
 
+        _shooterParent.GetComponent<PlayerControler>().EnableControler(true, true);
         Destroy(gameObject);
     }
 

@@ -54,6 +54,7 @@ LineRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 01de0078d8306094e9fed890b0a81698, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,17 +85,17 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.22725868
-        inSlope: -0.026110042
-        outSlope: -0.026110042
+        time: 0.26679036
+        value: 0.92631924
+        inSlope: -0.11302106
+        outSlope: -0.11302106
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.99425286
+        inWeight: 0.58649826
+        outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.18830872
+        value: 0
         inSlope: -0.04519776
         outSlope: -0.04519776
         tangentMode: 0
@@ -134,8 +135,8 @@ LineRenderer:
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
+    numCornerVertices: 2
+    numCapVertices: 2
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
@@ -172,7 +173,7 @@ Transform:
   m_GameObject: {fileID: 7224620214283946047}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0331907, y: -0.3464446, z: 2.019807}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -200,16 +201,16 @@ MonoBehaviour:
   _gradient:
     serializedVersion: 2
     key0: {r: 0.6792453, g: 0.49021003, b: 0.49021003, a: 0}
-    key1: {r: 0.7924528, g: 0.41491634, b: 0.41491634, a: 1}
-    key2: {r: 0.71587783, g: 0.46266145, b: 0.4813409, a: 1}
-    key3: {r: 1, g: 0.15516612, b: 0, a: 0}
+    key1: {r: 0.754717, g: 0.252759, b: 0.252759, a: 1}
+    key2: {r: 0.8490566, g: 0.252521, b: 0.21226415, a: 1}
+    key3: {r: 1, g: 0.9167996, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 1}
     key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 1}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 45489
-    ctime2: 59367
+    ctime1: 56808
+    ctime2: 63500
     ctime3: 65535
     ctime4: 0
     ctime5: 0
@@ -217,16 +218,16 @@ MonoBehaviour:
     ctime7: 0
     atime0: 0
     atime1: 34117
-    atime2: 58982
-    atime3: 62451
-    atime4: 65535
-    atime5: 0
-    atime6: 0
+    atime2: 60331
+    atime3: 62215
+    atime4: 63340
+    atime5: 64518
+    atime6: 65535
     atime7: 0
     m_Mode: 0
     m_ColorSpace: -1
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 5
+    m_NumAlphaKeys: 7
 --- !u!135 &128593438421821308
 SphereCollider:
   m_ObjectHideFlags: 0

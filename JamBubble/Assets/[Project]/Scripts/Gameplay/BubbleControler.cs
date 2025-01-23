@@ -11,7 +11,11 @@ public class BubbleControler : MonoBehaviour
     [Header("Min/Max : ")]
     [SerializeField] private float _minSize = 2;
     [SerializeField] private float _maxSize = 5;
+    [SerializeField] private float _minForceMult = 1;
+    [SerializeField] private float _maxForceMult = 3;
     private SphereCollider _sphereCollider;
+
+    public float ForceMult { get => Mathf.Lerp(_minForceMult, _maxForceMult, Mathf.InverseLerp(_minSize, _maxSize, _sphereCollider.radius)); }
 
     private void Start()
     {
