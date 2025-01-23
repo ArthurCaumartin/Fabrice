@@ -280,6 +280,7 @@ public class GameManager : MonoBehaviour
 
     public void LeaveGame(){
         AudioManager.Instance.PlaySFX("ui_cancel"); 
-        SceneManager.LoadScene("Main Menu");
+        TransitionManager.Instance.TransitionToScene("Main Menu");
+        DestroyImmediate(this);
     }
 }
