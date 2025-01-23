@@ -192,9 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a66b05e29c81141883cece36999d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeTime: 1
+  _lifeTime: 0.61
   _pushForce: 20
-  _moveSpeed: 30
+  _moveSpeed: 40.1
 --- !u!135 &128593438421821308
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.6
+  m_Radius: 0.33
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3074579897322695512
 PrefabInstance:

@@ -50,7 +50,7 @@ MonoBehaviour:
   _projectile: {fileID: -8912019441177645302, guid: ff2a8572bed31194c9cc9bc69e7e401b,
     type: 3}
   _shootPerSecond: 2
-  _selfPushForce: 30
+  _selfPushForce: 50.7
   _bubbleDecayPerShot: 0.1
 --- !u!1 &3405985997434809901
 GameObject:
