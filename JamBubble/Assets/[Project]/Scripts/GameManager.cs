@@ -181,12 +181,10 @@ public class GameManager : MonoBehaviour
         arbitre.transform.GetChild(0).DOLocalRotate(new Vector3(-0.25f,0,0), .5f).From(Vector3.zero).SetEase(Ease.OutBounce).SetInverted();
 
         ControllerVibrationEveryone(.5f,1.5f);
-        goalCanvas.SetActive(true);
+        
 
         teamNameText.text = teamPoint == Team.Left ? "Shark" : "Fish";
         teamNameText.color = teamPoint == Team.Left ? Color.cyan : Color.red;
-
-        goalCanvas.transform.DOLocalMoveY(0f, 1f).From(1100).SetEase(Ease.OutElastic);
 
         leftPoint += teamPoint == Team.Left ? 1 : 0;
         rightPoint += teamPoint == Team.Right ? 1 : 0;
@@ -211,6 +209,9 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator EndPoint(){
+        yield return new WaitForSeconds(.25f);
+        goalCanvas.SetActive(true);
+        goalCanvas.transform.DOLocalMoveY(0f, 1f).From(1100).SetEase(Ease.OutElastic);
         onGame = false;
         SetPlayerMovement(false);
 

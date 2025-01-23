@@ -18,6 +18,6 @@ public class BallMarker : MonoBehaviour
         float scaleMarker = Mathf.Lerp(3.95f, 2f, lerpInverseYPos);
         transform.localScale = new Vector3(scaleMarker, scaleMarker, scaleMarker);
         transform.position = new Vector3(parent.position.x, -0.3f, parent.position.z);
-        transform.localRotation = Quaternion.Euler(90,0,0);
+        transform.rotation = Quaternion.Euler(90,0,0);
     }
 }
