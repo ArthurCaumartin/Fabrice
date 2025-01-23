@@ -136,9 +136,9 @@ public class GameManager : MonoBehaviour
         Physics.SyncTransforms();
 
         foreach(GameObject objectToDes in objectsToDestroy){
-            Destroy(objectToDes);
+            if(objectToDes) Destroy(objectToDes);
         }
-
+        objectsToDestroy.Clear();
         return true;
     }
 

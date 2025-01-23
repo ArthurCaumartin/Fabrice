@@ -8,6 +8,7 @@ public class PowerUpSpawner : PowerUp
     public override void OnGrab(GameObject playerRef)
     {
         Instantiate(_prefabToSpawn, transform.position, Quaternion.identity);
+        
         base.OnGrab(playerRef);
     }
 }

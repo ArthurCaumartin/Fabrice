@@ -32,5 +32,6 @@ public class Spawner : MonoBehaviour
 
         GameObject newPowerUp = Instantiate(_prefabList[Random.Range(0, _prefabList.Count)], _spawnPointArray[index]);
         _spawnArray[index] = newPowerUp;
+        GameManager.Instance?.objectsToDestroy.Add(newPowerUp);
     }
 }
