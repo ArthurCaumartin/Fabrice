@@ -28,16 +28,13 @@ public class AudioManager : MonoBehaviour
         Sound soundToPlay = Array.Find(sfxSound, sound => sound.soundId == name);
         if(soundToPlay != null){
             AudioSource audioSource = sfxSource;
-            if(volume != -1){
+            if(audioSource.isPlaying || volume != -1 || pitch != -1){
                 audioSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
-                audioSource.volume = volume;
-                audioSource.pitch = pitch;
+                if(volume != -1) audioSource.volume = volume;
+                if(pitch != -1)audioSource.pitch = pitch;
                 Destroy(audioSource, soundToPlay.sound.length);
             }
-            else if(audioSource.isPlaying){
-                audioSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
-                Destroy(audioSource, soundToPlay.sound.length);
-            }
+
             audioSource.PlayOneShot(soundToPlay.sound);
         }
     }

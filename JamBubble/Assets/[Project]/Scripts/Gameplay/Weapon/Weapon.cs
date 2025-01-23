@@ -40,8 +40,8 @@ public class Weapon : MonoBehaviour
             _bubbleControler?.UpdateSize(-_bubbleDecayPerShot);
             InstantiateProjectile();  
             AudioManager.Instance.PlaySFX("shoot", .25f, UnityEngine.Random.Range(.9f,1.1f));
-            GameManager.Instance.Shake(0.1f, 0.15f);
-            GameManager.Instance.ControllerVibration(transform.parent.GetComponent<PlayerManager>().joystickId, 0.1f, 0.1f);
+            GameManager.Instance.Shake(0.1f, 0.05f);
+            //GameManager.Instance.ControllerVibration(transform.parent.GetComponent<PlayerManager>().joystickId, 0.05f, 0.05f);
         }
 
         if(_projectile is Laser) pushForce = 0;
