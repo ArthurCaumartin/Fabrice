@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text teamNameText;
     [SerializeField] CinemachineTargetGroup targetCam;
     [SerializeField] private CameraShake camShake;
+    [SerializeField] private GameObject arbitre;
+
 
 
     private void Awake(){
@@ -78,8 +80,11 @@ public class GameManager : MonoBehaviour
             }
 
             SetTimerText();
-            
         }
+        Vector3 targetPostition = new Vector3( ball.position.x, 
+                                       arbitre.transform.position.y, 
+                                       ball.position.z ) ;
+        arbitre.transform.LookAt( targetPostition ) ;
     }
 
     private void SetTimerText(){
@@ -172,13 +177,14 @@ public class GameManager : MonoBehaviour
     public void AddPoint(Team teamPoint){
         Shake(1.5f, 1f);
         AudioManager.Instance.PlaySFX("goal", .5f);
+        arbitre.transform.GetChild(0).DOLocalMoveY(.3f, .5f).From(0.125f).SetEase(Ease.OutBounce).SetInverted();
+        arbitre.transform.GetChild(0).DOLocalRotate(new Vector3(-0.25f,0,0), .5f).From(Vector3.zero).SetEase(Ease.OutBounce).SetInverted();
+
         ControllerVibrationEveryone(.5f,1.5f);
-        goalCanvas.SetActive(true);
+        
 
         teamNameText.text = teamPoint == Team.Left ? "Shark" : "Fish";
         teamNameText.color = teamPoint == Team.Left ? Color.cyan : Color.red;
-
-        goalCanvas.transform.DOLocalMoveY(0f, 1f).From(1100).SetEase(Ease.OutElastic);
 
         leftPoint += teamPoint == Team.Left ? 1 : 0;
         rightPoint += teamPoint == Team.Right ? 1 : 0;
@@ -203,6 +209,9 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator EndPoint(){
+        yield return new WaitForSeconds(.25f);
+        goalCanvas.SetActive(true);
+        goalCanvas.transform.DOLocalMoveY(0f, 1f).From(1100).SetEase(Ease.OutElastic);
         onGame = false;
         SetPlayerMovement(false);
 
