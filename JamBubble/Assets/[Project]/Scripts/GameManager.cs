@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         
         yield return new WaitUntil(() => GetAllPlayersReady());
         
-        readyPanel.transform.DOLocalMoveY(-735f,.25f).SetEase(Ease.OutBounce);
+        readyPanel.GetComponent<CanvasGroup>().DOFade(0f,.5f);
         scoreboard.SetActive(true);
         scoreboard.transform.DOLocalMoveY(525,.5f).From(640).SetEase(Ease.OutBounce);
 
@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
         Joystick joystick = ReInput.controllers.GetJoystick(joystickId);
         if(!joystick.supportsVibration) return;
         joystick.StopVibration();
-        if(joystick.vibrationMotorCount > 0) joystick.SetVibration(0, force, duration); // 1 second duration
+        if(joystick.vibrationMotorCount > 0) joystick.SetVibration(0, force, duration);
     }
 
     public IEnumerator EndPoint(){
@@ -225,14 +225,16 @@ public class GameManager : MonoBehaviour
     private void EndGame(){
         onGame = false;
         SetPlayerMovement(false);
-        AudioManager.Instance.PlaySFX("finish");
+        
 
         if(leftPoint != rightPoint || additionnalTime){
+            AudioManager.Instance.PlaySFX("finish");
             endGame = true;
             DisplayEndUI();
             ControllerVibrationEveryone(.35f,1.5f);
         }
         else{
+            AudioManager.Instance.PlaySFX("additional_time");
             gameTimer = 60;
             additionnalTime = true;
             additionalTimeObject.SetActive(true);
@@ -256,6 +258,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void LeaveGame(){
+        AudioManager.Instance.PlaySFX("ui_cancel"); 
         SceneManager.LoadScene("Main Menu");
     }
 }

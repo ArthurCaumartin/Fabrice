@@ -45,10 +45,10 @@ public class PressToJoinManager : MonoBehaviour
             Joystick joystick = joysticks[i];
             if(ReInput.controllers.IsControllerAssigned(joystick.type, joystick.id)) continue; 
             if(joystick.GetButtonDown(1) && playerList.Count == 0){
+                AudioManager.Instance.PlaySFX("ui_cancel"); 
                 SceneManager.LoadScene("Main Menu");
             }
             else if(joystick.GetAnyButtonDown()) {
-
                 Player player = FindPlayerWithoutJoystick();
                 if(player == null) return;
 
@@ -77,10 +77,12 @@ public class PressToJoinManager : MonoBehaviour
     }
 
     public bool CanStart(){
-        return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
+        return true;
+        //return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
     }
 
     private void AddPlayerItem(int playerId, Joystick joystick){
+        AudioManager.Instance.PlaySFX("ui_join"); 
         GameObject playerItem = Instantiate(playerItemPrefab, Vector3.zero, Quaternion.identity, selectorParent.GetChild(playerId));
         playerItem.transform.localPosition = Vector3.zero;
 
@@ -92,6 +94,7 @@ public class PressToJoinManager : MonoBehaviour
     }
 
     public void RemovePlayer(int playerId, GameObject playerToDestroy, int joystickId){
+        AudioManager.Instance.PlaySFX("ui_leave"); 
         Team actualTeam = playerToDestroy.GetComponent<PlayerItem>().actualTeam;
 
         leftTeamCount -= actualTeam == Team.Left ? 1 : 0;
@@ -105,6 +108,7 @@ public class PressToJoinManager : MonoBehaviour
     }
 
     public void ChangeTeam(Team newTeam, GameObject playerObject, int playerId){
+        AudioManager.Instance.PlaySFX("ui_move"); 
         Team actualTeam = playerObject.GetComponent<PlayerItem>().actualTeam;
 
         leftTeamCount -= actualTeam == Team.Left ? 1 : 0;
@@ -129,6 +133,7 @@ public class PressToJoinManager : MonoBehaviour
     public void TryToStart(){
         if(canStart){
             canJoin = false;
+            AudioManager.Instance.PlaySFX("ui_click"); 
             DontDestroyOnLoad(this.gameObject);
             SceneManager.LoadScene("Game");
         }

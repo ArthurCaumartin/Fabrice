@@ -29,15 +29,17 @@ public class Weapon : MonoBehaviour
 
     public void Shoot(out float pushForce)
     {
+        
         pushForce = 0;
         if (!_canShoot) return;
-
+      
         if (_shootTime > 1 / _shootPerSecond)
         {
             _shootTime = 0;
             pushForce = _selfPushForce;
             _bubbleControler?.UpdateSize(-_bubbleDecayPerShot);
-            InstantiateProjectile();
+            InstantiateProjectile();  
+            AudioManager.Instance.PlaySFX("shoot", .25f, UnityEngine.Random.Range(.9f,1.1f));
         }
 
         if(_projectile is Laser) pushForce = 0;
