@@ -82,7 +82,8 @@ public class PressToJoinManager : MonoBehaviour
     }
 
     public bool CanStart(){
-        return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
+        return true;
+        //return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
     }
 
     private void AddPlayerItem(int playerId, Joystick joystick){

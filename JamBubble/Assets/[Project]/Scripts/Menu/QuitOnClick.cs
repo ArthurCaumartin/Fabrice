@@ -22,6 +22,7 @@ public class QuitOnClick : MonoBehaviour
 
             Joystick joystick = joysticks[i];
             if(joystick.GetAnyButtonDown()) {
+                AudioManager.Instance.PlaySFX("ui_cancel"); 
                 TransitionManager.Instance.TransitionToScene("Main Menu");
             }
             
