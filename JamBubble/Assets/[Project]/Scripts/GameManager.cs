@@ -92,6 +92,8 @@ public class GameManager : MonoBehaviour
     }
 
     private IEnumerator InitiliazeGame(){
+        AudioManager.Instance?.StopMusic();
+        AudioManager.Instance?.PlayMusic("game");
         SetTimerText();
 
         yield return new WaitUntil(() => playersTransfer);
