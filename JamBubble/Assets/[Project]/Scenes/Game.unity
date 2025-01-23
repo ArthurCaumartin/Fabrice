@@ -1001,6 +1001,7 @@ MonoBehaviour:
   playersInGame: []
   playersLeft: []
   playersRight: []
+  objectsToDestroy: []
   ball: {fileID: 1946681675}
   gameTimer: 180
   leftPoint: 0
@@ -1028,7 +1029,7 @@ MonoBehaviour:
   goalCanvas: {fileID: 1396328756}
   teamNameText: {fileID: 79895470}
   targetCam: {fileID: 1001728269}
-  gameCamera: {fileID: 0}
+  camShake: {fileID: 1271085998}
 --- !u!1 &231618201
 GameObject:
   m_ObjectHideFlags: 0
@@ -5613,6 +5614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271085997}
   - component: {fileID: 1271085996}
+  - component: {fileID: 1271085998}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -5675,6 +5677,21 @@ Transform:
   - {fileID: 1990177729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &1271085998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271085995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b3fe0839973f445affe132102261a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0
+  shakeAmount: 0.75
+  decreaseFactor: 1
 --- !u!1 &1275105635
 GameObject:
   m_ObjectHideFlags: 0

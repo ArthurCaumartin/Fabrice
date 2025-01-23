@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     private List<PlayerStats> playersStats = new List<PlayerStats>();
     private int playersReady = 0;
 
+    public List<GameObject> objectsToDestroy = new List<GameObject>();
+
     [Header("Params")]
     [SerializeField] private Transform ball;
     public float gameTimer = 60;
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject goalCanvas;
     [SerializeField] private TMP_Text teamNameText;
     [SerializeField] CinemachineTargetGroup targetCam;
-    [SerializeField] private GameObject gameCamera;
+    [SerializeField] private CameraShake camShake;
 
 
     private void Awake(){
@@ -133,6 +135,10 @@ public class GameManager : MonoBehaviour
         ball.position = new Vector3(0,3,0);
         Physics.SyncTransforms();
 
+        foreach(GameObject objectToDes in objectsToDestroy){
+            Destroy(objectToDes);
+        }
+
         return true;
     }
 
@@ -158,7 +164,13 @@ public class GameManager : MonoBehaviour
         }        
     }
 
+    public void Shake(float time, float force){
+        camShake.shakeDuration = time;
+        camShake.shakeAmount = force;
+    }
+
     public void AddPoint(Team teamPoint){
+        Shake(1.5f, 1f);
         AudioManager.Instance.PlaySFX("goal");
         ControllerVibrationEveryone(.5f,1.5f);
         goalCanvas.SetActive(true);
@@ -185,7 +197,7 @@ public class GameManager : MonoBehaviour
 
     public void ControllerVibration(int joystickId, float force, float duration){
         Joystick joystick = ReInput.controllers.GetJoystick(joystickId);
-        if(!joystick.supportsVibration) return;
+        if(joystick == null || !joystick.supportsVibration) return;
         joystick.StopVibration();
         if(joystick.vibrationMotorCount > 0) joystick.SetVibration(0, force, duration);
     }
