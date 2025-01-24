@@ -56,11 +56,14 @@ public class PlayerItem : MonoBehaviour
         if(player.GetButtonDown("Back")){
             pressToJoinManager.RemovePlayer(player.id, this.gameObject, joystickId);
         }
+        
+        if(!canChangeTeam) return;
+
         if(player.GetButtonDown("Start")){
             pressToJoinManager.TryToStart();
         }
 
-        if(!canChangeTeam) return;
+        
         DOTween.Kill(playerId, true);
 
         if(player.GetAxisRaw("Horizontal") >= .5f){

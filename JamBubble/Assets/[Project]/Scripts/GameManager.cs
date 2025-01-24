@@ -92,6 +92,8 @@ public class GameManager : MonoBehaviour
     }
 
     private IEnumerator InitiliazeGame(){
+        AudioManager.Instance?.StopMusic();
+        AudioManager.Instance?.PlayMusic("game");
         SetTimerText();
 
         yield return new WaitUntil(() => playersTransfer);
@@ -280,6 +282,7 @@ public class GameManager : MonoBehaviour
 
     public void LeaveGame(){
         AudioManager.Instance.PlaySFX("ui_cancel"); 
-        SceneManager.LoadScene("Main Menu");
+        TransitionManager.Instance.TransitionToScene("Main Menu");
+        DestroyImmediate(this);
     }
 }

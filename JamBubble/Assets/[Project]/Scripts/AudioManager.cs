@@ -45,4 +45,8 @@ public class AudioManager : MonoBehaviour
             musicSource.PlayOneShot(soundToPlay.sound);
         }
     }
+
+    public void StopMusic(){
+        musicSource.Stop();
+    }
 }
