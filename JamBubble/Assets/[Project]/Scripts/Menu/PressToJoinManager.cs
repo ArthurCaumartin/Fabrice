@@ -90,7 +90,6 @@ public class PressToJoinManager : MonoBehaviour
     }
 
     public bool CanStart(){
-        return true;
         return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
     }
 
