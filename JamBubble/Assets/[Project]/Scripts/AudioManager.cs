@@ -19,6 +19,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixerGroup sfxGroup;
     [SerializeField] private AudioMixerGroup musicGroup;
 
+    public int volumeMasterIndex = 0;
+    public int volumeSFXIndex = 0;
+    public int volumeMusicIndex = 0;
+
 
     void Awake(){
         if(Instance != null){
@@ -58,33 +62,33 @@ public class AudioManager : MonoBehaviour
         musicSource.Stop();
     }
 
-    public void SetVolumeMaster(float volume){
-        masterGroup.audioMixer.SetFloat("volume", volume); 
+    public void SetVolumeMaster(int volume){
+        float newVolume = Mathf.Lerp(-30f, 0f, volume*.1f);
+        masterGroup.audioMixer.SetFloat("volumeMaster", newVolume); 
+        volumeMasterIndex = volume;
     }
 
-    public void SetVolumeSFX(float volume){
-        sfxGroup.audioMixer.SetFloat("volume", volume); 
+    public void SetVolumeSFX(int volume){
+        float newVolume = Mathf.Lerp(-30f, 0f, volume*.1f);
+        sfxGroup.audioMixer.SetFloat("volumeSFX", newVolume); 
+        volumeSFXIndex = volume;
     }
 
-    public void SetVolumeMusic(float volume){
-        musicGroup.audioMixer.SetFloat("volume", volume); 
+    public void SetVolumeMusic(int volume){
+        float newVolume = Mathf.Lerp(-30f, 0f, volume*.1f);
+        musicGroup.audioMixer.SetFloat("volumeMusic", newVolume); 
+        volumeMusicIndex = volume;
     }
 
     public int GetVolumeMaster(){
-        float volume;
-        masterGroup.audioMixer.GetFloat("volume", out volume);
-        return (int)(volume*10);
+        return volumeMasterIndex;
     }
 
     public int GetVolumeSFX(){
-        float volume;
-        sfxGroup.audioMixer.GetFloat("volume", out volume);
-        return (int)(volume*10);
+        return volumeSFXIndex;
     }
 
     public int GetVolumeMusic(){
-        float volume;
-        musicGroup.audioMixer.GetFloat("volume", out volume);
-        return (int)(volume*10);
+        return volumeMusicIndex;
     }
 }

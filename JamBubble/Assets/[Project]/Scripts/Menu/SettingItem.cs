@@ -31,6 +31,7 @@ public class SettingItem : MonoBehaviour, ISelectHandler, IDeselectHandler
     Resolution[] resolutions;
 
     void Start(){
+        transform.GetChild(0).GetComponent<TextAnimator_TMP>().SetBehaviorsActive(false);
         if(settingId == 0){
             index = Screen.fullScreen ? 0 : 1;
         }
@@ -51,7 +52,7 @@ public class SettingItem : MonoBehaviour, ISelectHandler, IDeselectHandler
         }
         else if(settingId == 4){
             index = AudioManager.Instance.GetVolumeMusic();
-        }      
+        }
         ChangeValue(index);
     }
 
@@ -91,6 +92,7 @@ public class SettingItem : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void ChangeValue(int newIndex){
         if(newIndex < 0 || newIndex >= keyButton.Count) return;
+        AudioManager.Instance.PlaySFX("ui_select"); 
         index = newIndex;
 
         canChange = false;
@@ -112,7 +114,13 @@ public class SettingItem : MonoBehaviour, ISelectHandler, IDeselectHandler
             Screen.SetResolution(newRes.width, newRes.height, Screen.fullScreen);
         }
         else if(settingId == 2){
-            AudioManager.Instance?.SetVolumeMaster(index*.1f);
+            AudioManager.Instance?.SetVolumeMaster(index);
+        }
+        else if(settingId == 3){
+            AudioManager.Instance?.SetVolumeSFX(index);
+        }
+        else if(settingId == 4){
+            AudioManager.Instance?.SetVolumeMusic(index);
         }
     }
 }
