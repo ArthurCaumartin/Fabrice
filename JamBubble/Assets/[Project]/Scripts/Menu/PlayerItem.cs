@@ -25,7 +25,7 @@ public class PlayerItem : MonoBehaviour
     public void GetPlayerId(int playerId){
         player = ReInput.players.GetPlayer(playerId);
         this.playerId = playerId;
-        playerIdText.text = playerId.ToString("0");
+        playerIdText.text = (playerId+1).ToString("0");
     }
 
     public void GetJoystickId(int joystickId){

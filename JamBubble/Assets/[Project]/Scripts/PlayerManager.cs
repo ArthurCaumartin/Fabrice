@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
         sharkModel.SetActive(playerTeam == Team.Left ? true : false);
         fishModel.SetActive(playerTeam == Team.Right ? true : false);
 
-        playerText.text = "J" + playerId.ToString("0");
+        playerText.text = "J" + (playerId+1).ToString("0");
         playerText.color = playerTeam == Team.Left ? Color.cyan : Color.red;
         markerSprite.color = playerTeam == Team.Left ? Color.cyan : Color.red;
     }

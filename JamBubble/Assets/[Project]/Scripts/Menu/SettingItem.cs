@@ -39,7 +39,7 @@ public class SettingItem : MonoBehaviour, ISelectHandler, IDeselectHandler
             resolutions = Screen.resolutions;
             List<string> options = new List<string>();
             for(int i = 0; i < resolutions.Length; i++){
-                keyButton.Add(resolutions[i].width + "x" + resolutions[i].height);
+                keyButton.Add(resolutions[i].width + "x" + resolutions[i].height + " (" + (Mathf.FloorToInt((float)resolutions[i].refreshRateRatio.value)).ToString() + "FPS)");
 
                 if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height) index = i;
             }
@@ -70,10 +70,10 @@ public class SettingItem : MonoBehaviour, ISelectHandler, IDeselectHandler
     }
 
     void Update(){
-        if(!canChange && timeBeforeChange < .25f){
+        if(!canChange && timeBeforeChange < .15f){
             timeBeforeChange += Time.deltaTime;  
-            if(timeBeforeChange >= .25f){
-                timeBeforeChange = .25f;
+            if(timeBeforeChange >= .15f){
+                timeBeforeChange = .15f;
                 canChange = true;
             } 
         }

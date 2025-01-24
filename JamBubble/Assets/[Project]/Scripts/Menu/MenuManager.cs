@@ -60,13 +60,13 @@ public class MenuManager : MonoBehaviour
 
         if(show){
             settingsPanel.SetActive(true);
-            settingsPanel.GetComponent<CanvasGroup>().DOFade(1,.25f).From(0f);
+            settingsPanel.GetComponent<CanvasGroup>().DOFade(1,.5f).From(0f).SetEase(Ease.OutQuint);
             settingsPanel.transform.DOLocalMoveY(0,.5f).From(-430f).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(.5f);
             EventSystem.current.SetSelectedGameObject(firstSettingsItem);
         }
         else {
-            settingsPanel.GetComponent<CanvasGroup>().DOFade(0,.25f).From(1f);
+            settingsPanel.GetComponent<CanvasGroup>().DOFade(0,.5f).From(1f).SetEase(Ease.OutQuint);
             settingsPanel.transform.DOLocalMoveY(-430f,.5f).From(0f).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(.5f);
             EventSystem.current.SetSelectedGameObject(playButton);

@@ -136,10 +136,12 @@ public class GameManager : MonoBehaviour
 
     private bool PlaceAllPlayers(){
         for(int i = 0; i < playersLeft.Count; i++){
+            playersLeft[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
             playersLeft[i].transform.position = leftStartPos[i].position;
             Physics.SyncTransforms();
         }
         for(int i = 0; i < playersRight.Count; i++){
+            playersRight[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
             playersRight[i].transform.position = rightStartPos[i].position;
             Physics.SyncTransforms();
         }      
@@ -225,6 +227,8 @@ public class GameManager : MonoBehaviour
         SetPlayerMovement(false);
 
         yield return new WaitForSeconds(4f);
+
+        SetPlayerMovement(false);
         goalCanvas.SetActive(false);
         if(!additionnalTime) StartCoroutine(StartPoint());
         else {

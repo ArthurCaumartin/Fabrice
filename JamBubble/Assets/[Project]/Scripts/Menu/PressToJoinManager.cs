@@ -90,7 +90,7 @@ public class PressToJoinManager : MonoBehaviour
     }
 
     public bool CanStart(){
-        return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
+        return leftTeamCount > 0 && rightTeamCount > 0 && leftTeamCount == rightTeamCount && playerList.Count == (leftTeamCount+rightTeamCount);
     }
 
     private void AddPlayerItem(int playerId, Joystick joystick){
@@ -125,6 +125,7 @@ public class PressToJoinManager : MonoBehaviour
     }
 
     public void ChangeTeam(Team newTeam, GameObject playerObject, int playerId){
+        if(!canJoin) return;
         AudioManager.Instance.PlaySFX("ui_move"); 
         Team actualTeam = playerObject.GetComponent<PlayerItem>().actualTeam;
 

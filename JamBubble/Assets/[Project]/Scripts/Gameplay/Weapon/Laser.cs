@@ -35,7 +35,7 @@ public class Laser : Projectile
         _activationTime += Time.deltaTime;
         if (_activationTime > _lifeTime)
         {
-            PushBodyOnPath(pathArray);
+            if(GameManager.Instance.onGame) PushBodyOnPath(pathArray);
         }
     }
 
