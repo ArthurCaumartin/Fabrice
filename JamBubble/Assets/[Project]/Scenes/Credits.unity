@@ -821,8 +821,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "BOUZIDI IDRIS | Ideis\nRobin LAVISSE | BialyRB\nCaumartin Arthur | _\nThomazeau
-    J\xE9r\xE9my | MATINBA\nNachtergaele L\xE9o | ozerlo\n"
+  m_text: "BOUZIDI Idris | Ideis\nLAVISSE Robin | BialyRB\nCAUMARTIN Arthur | _\nTHOMAZEAU
+    J\xE9r\xE9my | MATINBA\nNACHTERGAELE L\xE9o | ozerlo\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f418d1187420f9b4ab5c5bb2e0f320b3, type: 2}
   m_sharedMaterial: {fileID: -4163313681506854610, guid: f418d1187420f9b4ab5c5bb2e0f320b3,

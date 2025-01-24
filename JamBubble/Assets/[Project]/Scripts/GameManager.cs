@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Rewired;
-using Rewired.Demos;
-using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using Cinemachine;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -62,9 +60,18 @@ public class GameManager : MonoBehaviour
         Instance = this;
         FindAnyObjectByType<PressToJoinManager>().GetComponent<PressToJoinManager>().SetupGameManager();
         StartCoroutine(InitiliazeGame());
+
+        ReInput.ControllerConnectedEvent += OnControllerConnected;
     }
 
+    void OnDestroy() {
+        ReInput.ControllerConnectedEvent -= OnControllerConnected;
+    }
 
+    void OnControllerConnected(ControllerStatusChangedEventArgs args) {
+        GameObject playerItemToConnect = playersInGame.Where(x => x.GetComponent<PlayerManager>().joystickId == args.controllerId).SingleOrDefault();
+        playerItemToConnect.GetComponent<PlayerManager>().ReconnectController();
+    }
 
     public void GetPlayers(List<PlayerStats> playersStats){
         this.playersStats = playersStats;

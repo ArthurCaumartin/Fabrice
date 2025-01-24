@@ -38,6 +38,10 @@ public class PlayerManager : MonoBehaviour
         markerSprite.color = playerTeam == Team.Left ? Color.cyan : Color.red;
     }
 
+    public void ReconnectController(){
+        player.controllers.AddController(ControllerType.Joystick, joystickId, false);
+    }
+
     private void Update(){
         if(!isReady && player.GetButtonDown("Confirm") && !GameManager.Instance.GetAllPlayersReady()){
             isReady = true;
