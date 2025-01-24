@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Rendering;
 
 public class AudioManager : MonoBehaviour
 {
@@ -12,6 +14,14 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource musicSource;
+
+    [SerializeField] private AudioMixerGroup masterGroup;
+    [SerializeField] private AudioMixerGroup sfxGroup;
+    [SerializeField] private AudioMixerGroup musicGroup;
+
+    public int volumeMasterIndex = 0;
+    public int volumeSFXIndex = 0;
+    public int volumeMusicIndex = 0;
 
 
     void Awake(){
@@ -32,6 +42,7 @@ public class AudioManager : MonoBehaviour
                 audioSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
                 if(volume != -1) audioSource.volume = volume;
                 if(pitch != -1)audioSource.pitch = pitch;
+                audioSource.outputAudioMixerGroup = sfxGroup;
                 Destroy(audioSource, soundToPlay.sound.length);
             }
 
@@ -42,11 +53,42 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic(string name){
         Sound soundToPlay = Array.Find(musicSound, sound => sound.soundId == name);
         if(soundToPlay != null){
-            musicSource.PlayOneShot(soundToPlay.sound);
+            musicSource.clip = soundToPlay.sound;
+            musicSource.Play();
         }
     }
 
     public void StopMusic(){
         musicSource.Stop();
+    }
+
+    public void SetVolumeMaster(int volume){
+        float newVolume = Mathf.Lerp(-30f, 0f, volume*.1f);
+        masterGroup.audioMixer.SetFloat("volumeMaster", newVolume); 
+        volumeMasterIndex = volume;
+    }
+
+    public void SetVolumeSFX(int volume){
+        float newVolume = Mathf.Lerp(-30f, 0f, volume*.1f);
+        sfxGroup.audioMixer.SetFloat("volumeSFX", newVolume); 
+        volumeSFXIndex = volume;
+    }
+
+    public void SetVolumeMusic(int volume){
+        float newVolume = Mathf.Lerp(-30f, 0f, volume*.1f);
+        musicGroup.audioMixer.SetFloat("volumeMusic", newVolume); 
+        volumeMusicIndex = volume;
+    }
+
+    public int GetVolumeMaster(){
+        return volumeMasterIndex;
+    }
+
+    public int GetVolumeSFX(){
+        return volumeSFXIndex;
+    }
+
+    public int GetVolumeMusic(){
+        return volumeMusicIndex;
     }
 }

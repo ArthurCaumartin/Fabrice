@@ -76,7 +76,7 @@ public class PlayerItem : MonoBehaviour
             }
         }
         else if(player.GetAxisRaw("Horizontal") <= -.5f){
-            transform.DOPunchRotation(new Vector3(0,0,-1) * 10f, .25f, 20, 1).SetId(2);
+            transform.DOPunchRotation(new Vector3(0,0,-1) * 10f, .25f, 20, 1).SetId(playerId);
             if(actualTeam == Team.None){
                 pressToJoinManager.ChangeTeam(Team.Left, this.gameObject, player.id);
             }

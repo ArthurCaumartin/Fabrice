@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
@@ -25,6 +26,13 @@ public class PressToJoinManager : MonoBehaviour
     void Start(){
         AudioManager.Instance?.StopMusic();
         AudioManager.Instance?.PlayMusic("character");
+
+        ReInput.ControllerDisconnectedEvent += OnControllerDisconnected;
+    }
+
+    void OnDestroy() {
+        // Unsubscribe from events
+        ReInput.ControllerDisconnectedEvent -= OnControllerDisconnected;
     }
 
     public void SetupGameManager(){
@@ -82,7 +90,6 @@ public class PressToJoinManager : MonoBehaviour
     }
 
     public bool CanStart(){
-        //return true;
         return leftTeamCount > 0 && leftTeamCount == rightTeamCount;
     }
 
@@ -96,6 +103,11 @@ public class PressToJoinManager : MonoBehaviour
         playerItem.GetComponent<PlayerItem>().GetJoystickId(joystick.id);
 
         playerList.Add(playerItem.GetComponent<PlayerItem>());
+    }
+
+    void OnControllerDisconnected(ControllerStatusChangedEventArgs args) {
+        PlayerItem playerItemToDestroy = playerList.Where(x => x.joystickId == args.controllerId).SingleOrDefault();
+        RemovePlayer(playerItemToDestroy.playerId, playerItemToDestroy.gameObject, args.controllerId);
     }
 
     public void RemovePlayer(int playerId, GameObject playerToDestroy, int joystickId){
